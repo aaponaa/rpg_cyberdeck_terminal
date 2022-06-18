@@ -1,15 +1,13 @@
-import csv
 from termcolor import colored
+from function import csv_list
+
 
 class Cmd_ui():
 
     def __init__(self) -> None:
-        with open('notes.csv', newline='') as f:
-            reader = csv.reader(f)
-            data = list(reader)
-
+        
+        self.list_csv = csv_list("saves/notes.csv")
         self.inter = "Home"
-        self.list_csv = data
         pass
 
     def logo ():
@@ -37,7 +35,7 @@ class Cmd_ui():
 
     def home(self):
 
-        menus = ['Wiki','Event','Notes']
+        menus = ['Wiki','Event','Notes','Runner']
 
         Cmd_ui.logo()
 
@@ -70,23 +68,29 @@ class Cmd_ui():
         print('')
 
     def notes(self):
-        
+
+        self.list_csv = csv_list("saves/notes.csv")
         it = 0
 
         Cmd_ui.logo()
+
+
         print('')
 
         print('Your Notes : ') 
         print('')
 
-        for no in self.list_csv:
-            print(str(it) +" |> "+ no[0]+ " : " +no[1])
-            print('')
-            it+=1
+        #if self.list_csv != []:
+         #   for no in self.list_csv:
+          #      print(str(it) +" |> "+ no[0]+ " : " +no[1])
+         #       print('')
+       #         it+=1
+        #else:
+     #       print('There is no notes')
+    #
+        print(self.list_csv)
 
-        if self.list_csv == []:
-            print('There is no notes')
-    
-        print('')
-    
+    def runner():
+        Cmd_ui.logo()
+        print("Here is your charachter sheet !")    
 

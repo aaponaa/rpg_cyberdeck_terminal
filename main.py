@@ -1,20 +1,17 @@
+from cgi import print_environ
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 import os
 from ui import Cmd_ui
-import csv
+
+from function import csv_write
 
 url = "https://wiki.shadowrun-jdr.fr/index.php/ShadowWiki"
 
-def to_my_notes(note):
-    with open('save.csv', 'w') as f:
-        for key in note.keys():
-            f.write("%s, %s\n" % (key, note[key]))
 
 def make_tab(my_soup, titres=[]):
 
-    for li in my_soup:
-        titres.append(li.text)
+    titres.extend([li.text for li in my_soup])
     return titres
 
 def make_list(selected):
@@ -63,6 +60,13 @@ def main(entree = 'Home'):
             interface.inter = "Home"
             interface.home()
 
+
+        
+        elif entree == "Help":
+            print('Commands |> Wiki, Event, Notes')
+
+
+
         elif entree == 'Wiki':
             interface.inter="Wiki"
             os.system('clear')
@@ -88,19 +92,30 @@ def main(entree = 'Home'):
             else :
                 print('Wrong Entry Retry')
                 print(' ')  
-            
+
+
+
         elif entree == "Event":
             interface.inter="Event"
             os.system('clear')
             interface.event()
-                
-        elif entree == "Help":
-            print('Menu |> Wiki, Event, Notes')
+            
+
+
+        elif entree == "Runner":
+            interface.inter="Runner"
+            os.system('clear')
+            interface.runner()
+
+
 
         elif entree == "Notes":
             interface.inter="Notes"
             os.system('clear')
             interface.notes()
+
+        elif mode == "Notes" and entree == "Delete All":
+            csv_write("saves/notes.csv",[])
 
         elif mode == "Notes" and entree == "Add":
 
@@ -110,13 +125,14 @@ def main(entree = 'Home'):
             aj = input("Write Note : ")
             aj_list.append(aj)
 
+            print(aj_list)
             interface.list_csv.append(aj_list)
-
-            with open('notes.csv', 'w', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow(interface.list_csv)
+            print(interface.list_csv)
+            csv_write('saves/notes.csv',interface.list_csv)
 
             print("Note Added !")
+
+
 
         else :
             print('Wrong Entry Retry')
