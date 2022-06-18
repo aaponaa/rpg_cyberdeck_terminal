@@ -1,0 +1,132 @@
+from bs4 import BeautifulSoup as soup
+from urllib.request import urlopen as uReq
+import os
+from ui import Cmd_ui
+import csv
+
+url = "https://wiki.shadowrun-jdr.fr/index.php/ShadowWiki"
+
+def to_my_notes(note):
+    with open('save.csv', 'w') as f:
+        for key in note.keys():
+            f.write("%s, %s\n" % (key, note[key]))
+
+def make_tab(my_soup, titres=[]):
+
+    for li in my_soup:
+        titres.append(li.text)
+    return titres
+
+def make_list(selected):
+    out = []
+    buff = []
+    for c in selected:
+        if c == '\n':
+            out.append(''.join(buff))
+            buff = []
+        else:
+            buff.append(c)
+    else:
+        if buff:
+            out.append(''.join(buff))
+    return out
+
+def make_soup(my_url):
+
+    client = uReq(my_url)
+    page_html = client.read()
+    client.close()
+
+    page_soup = soup(page_html, features="html.parser")
+    return page_soup
+
+def souped(url,page=0):
+
+    soup = make_soup(url).find_all('td') # faut en faire une fonction 
+    menu = make_tab(soup)[int(page)]
+    list_menu = make_list(menu)
+
+    return list_menu      
+
+def main(entree = 'Home'):
+    
+    interface = Cmd_ui()   
+    page = 0 
+    my_soup = make_soup(url)
+
+    while entree != "Exit" :
+        mode = interface.inter
+
+        if entree == 'Home':
+            os.system('clear')   
+            page=0     
+            interface.inter = "Home"
+            interface.home()
+
+        elif entree == 'Wiki':
+            interface.inter="Wiki"
+            os.system('clear')
+            interface.wiki(souped(url,page))
+
+        elif mode == "Wiki": 
+        
+            if entree == "L":
+                page -= 1
+                os.system('clear')
+                interface.wiki(souped(url,page))
+
+            elif entree == "R":
+                page +=1 
+                os.system('clear')
+                interface.wiki(souped(url,page))
+
+            elif entree.isnumeric() and int(entree) >= 0 and int(entree)<= len(souped(url,page)):
+
+                souped_url = my_soup.find_all("a", title = str(souped(url,page)[int(entree)]))
+                print(souped(url,page)[int(entree)])
+                print(souped_url)
+            else :
+                print('Wrong Entry Retry')
+                print(' ')  
+            
+        elif entree == "Event":
+            interface.inter="Event"
+            os.system('clear')
+            interface.event()
+                
+        elif entree == "Help":
+            print('Menu |> Wiki, Event, Notes')
+
+        elif entree == "Notes":
+            interface.inter="Notes"
+            os.system('clear')
+            interface.notes()
+
+        elif mode == "Notes" and entree == "Add":
+
+            aj_list=[]
+            aj = input("Note Name : ")
+            aj_list.append(aj)
+            aj = input("Write Note : ")
+            aj_list.append(aj)
+
+            interface.list_csv.append(aj_list)
+
+            with open('notes.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(interface.list_csv)
+
+            print("Note Added !")
+
+        else :
+            print('Wrong Entry Retry')
+            print(' ')  
+
+        entree = interface.run()
+
+        #print("Debug : Page = "+ str(page)+" Mode = "+ interface.inter+" Entree = "+entree)#Débug Zone
+        
+        
+
+if __name__ ==  "__main__":
+    main()
