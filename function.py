@@ -1,6 +1,6 @@
-import csv
-import pandas as pd 
+import csv 
 
+#Make the csv notes 
 def csv_list(path):
     
     with open(path, newline='') as f:

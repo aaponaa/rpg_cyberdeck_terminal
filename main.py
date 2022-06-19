@@ -1,7 +1,8 @@
-from cgi import print_environ
+
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 import os
+from sheet import Player_sheet
 from ui import Cmd_ui
 
 from function import csv_write
@@ -46,7 +47,7 @@ def souped(url,page=0):
     return list_menu      
 
 def main(entree = 'Home'):
-    
+    player = Player_sheet()
     interface = Cmd_ui()   
     page = 0 
     my_soup = make_soup(url)
@@ -56,9 +57,10 @@ def main(entree = 'Home'):
 
         if entree == 'Home':
             os.system('clear')   
-            page=0     
+            page=0
             interface.inter = "Home"
             interface.home()
+            player.tiny_sheet()
 
 
         
@@ -71,27 +73,6 @@ def main(entree = 'Home'):
             interface.inter="Wiki"
             os.system('clear')
             interface.wiki(souped(url,page))
-
-        elif mode == "Wiki": 
-        
-            if entree == "L":
-                page -= 1
-                os.system('clear')
-                interface.wiki(souped(url,page))
-
-            elif entree == "R":
-                page +=1 
-                os.system('clear')
-                interface.wiki(souped(url,page))
-
-            elif entree.isnumeric() and int(entree) >= 0 and int(entree)<= len(souped(url,page)):
-
-                souped_url = my_soup.find_all("a", title = str(souped(url,page)[int(entree)]))
-                print(souped(url,page)[int(entree)])
-                print(souped_url)
-            else :
-                print('Wrong Entry Retry')
-                print(' ')  
 
 
 
@@ -106,6 +87,14 @@ def main(entree = 'Home'):
             interface.inter="Runner"
             os.system('clear')
             interface.runner()
+
+
+        elif entree== "Damage":
+            player.mc_phys+=1
+            interface.inter = "Home"
+            os.system('clear')
+            interface.home()
+            player.tiny_sheet()
 
 
 
@@ -132,6 +121,27 @@ def main(entree = 'Home'):
 
             print("Note Added !")
 
+
+        elif mode == "Wiki": 
+        
+            if entree == "L":
+                page -= 1
+                os.system('clear')
+                interface.wiki(souped(url,page))
+
+            elif entree == "R":
+                page +=1 
+                os.system('clear')
+                interface.wiki(souped(url,page))
+
+            elif entree.isnumeric() and int(entree) >= 0 and int(entree)<= len(souped(url,page)):
+
+                souped_url = my_soup.find_all("a", title = str(souped(url,page)[int(entree)]))
+                print(souped(url,page)[int(entree)])
+                print(souped_url)
+            else :
+                print('Wrong Entry Retry')
+                print(' ')  
 
 
         else :
