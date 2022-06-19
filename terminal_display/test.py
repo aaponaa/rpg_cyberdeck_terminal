@@ -106,12 +106,13 @@ class TerminalGrid:
     __padding: int = 0
     __col_sep: str = None
     __row_sep: str = None
-    __grid: dict = {}
+    __grid: dict = None
 
     def __init__(self, padding=0, col_sep=None, row_sep=None):
         self.__padding = padding
         self.__col_sep = col_sep
         self.__row_sep = row_sep
+        self.__grid = {}
 
     def add(self, value: Any, row: int, col: int, rowspan: int = 1, colspan: int = 1,
             alignment=Alignment.START) -> TerminalGrid:
@@ -138,46 +139,50 @@ class TerminalGrid:
         rows = self.__rows()
         cols = self.__cols()
         column_widths = self.__column_widths(width, cols)
-        slines = [[] for _ in range(rows)]
+        print(column_widths)
+        slines = [[None for _ in range(cols)] for _ in range(rows)]
         for row in range(rows):
             if row not in self.__grid:
-                slines[row].append(self.__pad(self.__format("", sum(column_widths), Alignment.START)))
-            parts = []
-            for (ix, col) in enumerate(range(cols)):
-                element = None
-                next_col = col + 1
-                alignment = Alignment.START
-                if col in self.__grid[row]:
-                    e = self.__grid[row][col]
-                    element = e["element"]
-                    next_col = col + e["colspan"]
-                    alignment = e["alignment"]
-                else:
-                    element = ""
-                    next_col = col + 1
-                    while next_col not in row:
-                        next_col += 1
+                for col in range(cols):
+                    slines[row][col] = self.__pad(self.__format("", column_widths[col], Alignment.START))
+            else:
+                for col in range(cols):
+                    alignment = Alignment.START
+                    if col in self.__grid[row]:
+                        e = self.__grid[row][col]
+                        element = e["element"]
+                        next_col = col + e["colspan"]
+                        alignment = e["alignment"]
+                    else:
+                        element = ""
+                        next_col = col + 1
+                        while next_col not in self.__grid[row] and next_col < (cols - 1):
+                            next_col += 1
 
-                if isinstance(element, str):
-                    slines[row].append(self.__pad(self.__format(element, sum(column_widths[col:next_col]), alignment)))
-                elif isinstance(element, TerminalGrid):
-                    sb = {
-                        "left": col > 0,
-                        "right": col < cols - 1,
-                        "top": row > 0,
-                        "bottom": row < rows - 1
-                    }
-                    i = 0
-                    for line in element.lines(sum(column_widths[col:next_col]), sb):
-                        if i < len(slines) - 1:
-                            slines.append([])
-                        slines[i].append(line)
-                        i += 1
-                        print(i)
+                    if isinstance(element, str):
+                        slines[row][col] = self.__pad(self.__format(element, sum(column_widths[col:next_col]), alignment))
+                    elif isinstance(element, TerminalGrid):
+                        sb = {
+                            "left": col >= 0,
+                            "right": col <= cols - 1,
+                            "top": row > 0,
+                            "bottom": row < rows - 1
+                        }
+                        new_lines = [line for line in element.lines(sum(column_widths[col:next_col]), sb)]
+                        for (i, line) in enumerate(new_lines):
+                            if row + i >= len(slines):
+                                slines.append([None for _ in range(cols)])
+                            slines[row+i][col] = line
+
 
             # slines.append(self.__line(("" if self.__col_sep is None else self.__col_sep).join(parts)))
         for scols in slines:
-            yield self.__line(("" if self.__col_sep is None else self.__col_sep).join(scols),
+            for (c, value) in enumerate(scols):
+                if value is None:
+                    scols[c] = self.__pad(self.__format("", column_widths[c], Alignment.CENTER))
+
+            yield self.__line(("" if self.__col_sep is None else self.__col_sep)
+                              .join(scols),
                               borders["left"] is not False,
                               borders["right"] is not False)
 
@@ -214,7 +219,9 @@ class TerminalGrid:
             col = (col + 1) % cols
         return [w - 2 * self.__padding - (0 if self.__col_sep is None else len(self.__col_sep)) for w in column_widths]
 
-    def to_str(self, width: int, borders: dict = {"left": True, "right": True, "top": True, "bottom": True}) -> str:
+    def to_str(self, width: int, borders=None) -> str:
+        if borders is None:
+            borders = {"left": True, "right": True, "top": True, "bottom": True}
         return "\n".join([line for line in self.lines(width, borders)])
 
     def __start_line(self, width: int) -> str:
@@ -264,18 +271,18 @@ if __name__ == "__main__":
             subcard1.add("*" if (i * 3 + c) < k else " ", i, c, alignment=Alignment.CENTER)
         subcard1.add("-" + str(i + 1), i, 3, alignment=Alignment.END)
 
-    print("Width 50")
-    print(subcard1.to_str(50))
-    print()
-    print("Width 15")
-    print(subcard1.to_str(15))
+    # print("Width 50")
+    # print(subcard1.to_str(50))
+    # print()
+    # print("Width 15")
+    # print(subcard1.to_str(15))
 
     card = TerminalGrid(padding=1) \
         .add("test", 0, 0) \
         .add("Physique", 1, 0) \
         .add("Etourdissant", 1, 2) \
         .add(subcard1, 2, 0) \
-        .add("test", 2, 1) \
-        .add("test", 2, 2)
+        .add(subcard1, 2, 1) \
+        .add(subcard1, 2, 2)
 
-    print(card.to_str(50))
+    print(card.to_str(65))
