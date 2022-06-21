@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const SHEET = require('../char1.json');
+const SHEET = require('./char2.json');
 const cors = require('cors');
 
 const PORT = 8080;
