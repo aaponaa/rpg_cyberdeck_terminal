@@ -7,18 +7,10 @@
 // Escape the HTML for the JSON
 // https://www.freeformatter.com/json-escape.html
 
-async function getStuff(){
-  let rep = await fetch('http://localhost:8080/sheet', { method: 'GET' });
-  let reponse = await rep.json();
-  return reponse;
-}
-
-
 function ParseJSON(data, elmID, nodeType) {
  try {
-   // Use this if the JSON is coming over the wire
-   var JSONdata = JSON.parse(data);
-   //var JSONdata = data;
+
+   var JSONdata = data;
 
    var divContainer = document.getElementById(elmID);
    divContainer.innerHTML = "";
@@ -146,10 +138,19 @@ function removeSpecialChars(str) {
    .replace(" ","");
 }
 
-var stuff = getStuff()
+let url ='http://localhost:8080/sheet/2'
 
-ParseJSON(stuff, "Core", "Core");
-ParseJSON(stuff, "Magic", "Magic");
-ParseJSON(stuff, "Cyber", "Cyber");
-ParseJSON(stuff, "VehicleDrone", "VehicleDrone");
-ParseJSON(stuff, "Notes", "Notes");
+fetch(url,
+    {
+      method: 'GET'
+    }
+) .then(response => response.json())
+
+  .then(response => {
+  ParseJSON(response, "Core", "Core");
+  ParseJSON(response, "Magic", "Magic");
+  ParseJSON(response, "Cyber", "Cyber");
+  ParseJSON(response, "VehicleDrone", "VehicleDrone");
+  ParseJSON(response, "Notes", "Notes");
+});
+
