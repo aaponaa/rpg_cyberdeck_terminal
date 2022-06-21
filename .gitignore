@@ -132,3 +132,5 @@ __pycache__
 
 # PyCharm
 .idea
+/www/terminal_api/node_modules/
+/www/.idea/
