@@ -12,8 +12,9 @@ app.get('/sheet/:id', (req,res) => {
 })
 
 // POST method route
-app.post('/post-sheet:value', function (req, res) {
+app.post('/post-sheet', function (req, res) {
 
+    console.log("yo")
     res.send('POST the JSON saved !'+req.params.value);
 });
 

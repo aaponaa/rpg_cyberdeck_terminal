@@ -1,4 +1,17 @@
 
+const url ='http://localhost:8080/sheet/2'
+
+function getValue (item, names){
+    let inputValList = [];
+    let namesList = names.split(',');
+    for (let a = 0; a < namesList.length; a++) {
+
+        var inputVal = document.getElementById(namesList[a]).value;
+        inputValList.push(inputVal);
+    }
+
+    alert(item +" : "+inputValList.toString());
+}
 
 function editJSON(data, elmID, nodeType) {
     try {
@@ -35,21 +48,11 @@ function editJSON(data, elmID, nodeType) {
 
                 // If there is:
                 // Attributes make a form with submit button
-                if (item.attributes !== undefined) {
+                if (item.attributes !== undefined ) {
                     var attrs = Object.keys(item.attributes);
                     var attrVals = Object.values(item.attributes);
                     var dl = document.createElement("form");
-                    dl.setAttribute("action", "http://localhost:8080/post-sheet");
-                    dl.setAttribute("method", "get");
-                    dl.setAttribute("id", item.name)
-                    dl.addEventListener('submit', (event) => {
 
-
-                        var inputVal = document.getElementById("Metatype").value;
-                        alert(dl.id);
-                        // Displaying the value
-
-                    });
 
                     for (let i = 0; i < attrs.length; i++) {
                         var dt = document.createElement("dt");
@@ -60,13 +63,11 @@ function editJSON(data, elmID, nodeType) {
                         entr.defaultValue = attrVals[i];
                         dl.appendChild(entr);
                     }
+
                     var s = document.createElement("input");
                     s.setAttribute("type", "submit");
-                    s.setAttribute("value", "Save");
-                    s.setAttribute("name", item.name)
+                    s.setAttribute("onclick", "getValue('"+item.name+"','"+Object.keys(item.attributes)+"');")
                     dl.appendChild(s);
-
-
                 }
 
                 // Boxes
@@ -155,7 +156,6 @@ function removeSpecialChars(str) {
 }
 
 // Api sheet.json call
-const url ='http://localhost:8080/sheet/2'
 
 fetch(url,
     {
@@ -170,7 +170,7 @@ fetch(url,
         editJSON(response, "VehicleDrone", "VehicleDrone");
         editJSON(response, "Notes", "Notes");
 
-        let sheet = response;
+        const sheet = response;
         JSON.stringify(sheet);
         //sheet.inventory.push(some_item);
         console.log(sheet);
