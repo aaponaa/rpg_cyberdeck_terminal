@@ -10,7 +10,7 @@ class Player_sheet:
 
         self.mc_etour = 0
         self.mc_phys = 6
-        self.physical_damage = 8
+        self.physical_damage = 7
         self.stun_damage = 0
         self.attributes = {
             "physical": {
@@ -70,7 +70,7 @@ class Player_sheet:
             .add("________________", 2, 2) \
             .add("________________", 2, 4)
 
-        colored_threshold = lambda t, d: colored(str(max(-9, -t - 1)), default_color) if d <= t * 3 \
+        colored_threshold = lambda t, d: colored(str(max(-9, -t - 1)), default_color) if (t + 1) * 3 > d \
             else colored(str(max(-9, -t - 1)), "red")
         damages = lambda t, d: [colored("*", "yellow") if d > t * 3 + k else " " for k in range(3)]
         damage_line = lambda t, d: colored(" | ", default_color).join(damages(t, d) + [colored_threshold(t, d)])
