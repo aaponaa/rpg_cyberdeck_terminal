@@ -11,6 +11,12 @@ app.get('/sheet/:id', (req,res) => {
     res.status(200).json(SHEET)
 })
 
+// POST method route
+app.post('/post-sheet:value', function (req, res) {
+
+    res.send('POST the JSON saved !'+req.params.value);
+});
+
 app.listen(PORT, function(err){
     if (err) console.log(err);
     console.log("Server listening on PORT", PORT);

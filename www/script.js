@@ -10,41 +10,45 @@
 function ParseJSON(data, elmID, nodeType) {
  try {
 
-   var JSONdata = data;
-
-   var divContainer = document.getElementById(elmID);
+   // Get the data we need
+   const charSheet = data;
+   const divContainer = document.getElementById(elmID);
    divContainer.innerHTML = "";
+   const filteredNodes = charSheet.items;
 
-   var filteredNodes = JSONdata.items;
+   // For that iterates on the JSON items
+   for (let a = 0; a < filteredNodes.length; a++) {
+     let item = filteredNodes[a];
 
-   for (var a = 0; a < filteredNodes.length; a++) {
-     var json = filteredNodes[a];
-     if (json.card === nodeType) {
+     if (item.card === nodeType) {
        // I have to find a way to filter
-       var article = document.createElement("article");
-       article.className = json.type
+       let article = document.createElement("article");
+       article.className = item.type
          .split(" ")
          .join("-")
          .toLowerCase();
-       article.setAttribute('id', removeSpecialChars(json.name));
+       article.setAttribute('id', removeSpecialChars(item.name));
 
-       // heading
-       var h2 = document.createElement("h2");
-       var span = document.createElement("span");
+       // Always Make Headings
+       let h2 = document.createElement("h2");
+       let span = document.createElement("span");
        h2.appendChild(span);
-       span.innerHTML = json.name;
-       if (json.type !== undefined && json.type != "") {
-         span.innerHTML = json.type + ": " + span.innerHTML;
+       span.innerHTML = item.name;
+       if (item.type !== undefined && item.type != "") {
+         span.innerHTML = item.type + ": " + span.innerHTML;
        }
-       var span2 = document.createElement("span");
+       let span2 = document.createElement("span");
        h2.appendChild(span2);
 
-       // attributes
-       if (json.attributes !== undefined) {
-         var attrs = Object.keys(json.attributes);
-         var attrVals = Object.values(json.attributes);
+       // If there is:
+       // Attributes
+       if (item.attributes !== undefined) {
+         var attrs = Object.keys(item.attributes);
+         var attrVals = Object.values(item.attributes);
          var dl = document.createElement("dl");
-         for (var i = 0; i < attrs.length; i++) {
+
+
+         for (let i = 0; i < attrs.length; i++) {
            var dt = document.createElement("dt");
            dt.innerHTML = attrs[i];
            dl.appendChild(dt);
@@ -54,32 +58,32 @@ function ParseJSON(data, elmID, nodeType) {
          }
        }
 
-       // boxes
-       if (json.Boxes !== undefined) {
+       // Boxes
+       if (item.Boxes !== undefined) {
          var pB = document.createElement("p");
          pB.className = "boxes";
          var boxen = "";
-         for (var i = 0; i < json.Boxes; i++) {
+         for (var i = 0; i < item.Boxes; i++) {
            boxen = "<span>◯</span>" + boxen;
          }
          pB.innerHTML = "<strong>Condition Monitor:</strong> " + boxen;
        }
 
-       // notes
-       if (json.Notes !== undefined) {
+       // Notes
+       if (item.Notes !== undefined) {
          var p = document.createElement("p");
-         p.innerHTML = "<strong>Notes:</strong> " + json.Notes;
+         p.innerHTML = "<strong>Notes:</strong> " + item.Notes;
        }
 
-       // data grid
-       if (json.table !== undefined && json.row !== undefined) {
+       // Data grid
+       if (item.table !== undefined && item.row !== undefined) {
          var table = document.createElement("table");
          var caption = document.createElement("caption");
-         caption.innerHTML = json.table;
+         caption.innerHTML = item.table;
          table.appendChild(caption);
 
-         var tableHead = Object.keys(json.row[0]);
-         var tableRows = Object.values(json.row);
+         var tableHead = Object.keys(item.row[0]);
+         var tableRows = Object.values(item.row);
 
          var tr = table.insertRow(-1);
          for (var i = 0; i < tableHead.length; i++) {
@@ -89,7 +93,7 @@ function ParseJSON(data, elmID, nodeType) {
          }
 
          for (var j = 0; j < tableRows.length; j++) {
-           var tableCells = Object.values(json.row[j]);
+           var tableCells = Object.values(item.row[j]);
            var tr = table.insertRow(-1);
            for (var k = 0; k < tableCells.length; k++) {
              var tabCell = tr.insertCell(-1);
@@ -98,33 +102,34 @@ function ParseJSON(data, elmID, nodeType) {
          }
        }
 
-       // raw HTML
-       if (json.HTML !== undefined) {
+       // Raw HTML
+       if (item.HTML !== undefined) {
          var div = document.createElement("div");
-         div.innerHTML = json.HTML;
+         div.innerHTML = item.HTML;
        }
 
-       // build it
+       // And then build it:
        divContainer.appendChild(article);
        article.appendChild(h2);
-       if (json.attributes !== undefined) {
+       if (item.attributes !== undefined) {
          article.appendChild(dl);
        }
-       if (json.Boxes !== undefined) {
+       if (item.Boxes !== undefined) {
          article.appendChild(pB);
        }
-       if (json.Notes !== undefined) {
+       if (item.Notes !== undefined) {
          article.appendChild(p);
        }
-       if (json.table !== undefined && json.row !== undefined) {
+       if (item.table !== undefined && item.row !== undefined) {
          article.appendChild(table);
        }
-       if (json.HTML !== undefined) {
+       if (item.HTML !== undefined) {
          article.appendChild(div);
        }
      }
    }
  } catch (e) {
+   // If error
    console.log("ParseJSON(): " + e);
  }
 }
@@ -138,7 +143,8 @@ function removeSpecialChars(str) {
    .replace(" ","");
 }
 
-let url ='http://localhost:8080/sheet/2'
+// Api sheet.json call
+const url ='http://localhost:8080/sheet/2'
 
 fetch(url,
     {
@@ -152,5 +158,10 @@ fetch(url,
   ParseJSON(response, "Cyber", "Cyber");
   ParseJSON(response, "VehicleDrone", "VehicleDrone");
   ParseJSON(response, "Notes", "Notes");
-});
+
+  let sheet = response;
+  JSON.stringify(sheet);
+  //sheet.inventory.push(some_item);
+  console.log(sheet);
+  });
 
