@@ -1,11 +1,10 @@
 
 const url ='http://localhost:8080/sheet/2'
 
-function getValue (item, names){
+function getValue (item, value){
     let inputValList = [];
-    let namesList = names.split(',');
+    let namesList = value.split(',');
     for (let a = 0; a < namesList.length; a++) {
-
         var inputVal = document.getElementById(namesList[a]).value;
         inputValList.push(inputVal);
     }
@@ -20,11 +19,11 @@ function editJSON(data, elmID, nodeType) {
         const charSheet = data;
         const divContainer = document.getElementById(elmID);
         divContainer.innerHTML = "";
-        const filteredNodes = charSheet.items;
+        const sheetItems = charSheet.items;
 
         // For that iterates on the JSON items
-        for (let a = 0; a < filteredNodes.length; a++) {
-            let item = filteredNodes[a];
+        for (let a = 0; a < sheetItems.length; a++) {
+            let item = sheetItems[a];
 
             if (item.card === nodeType) {
                 // I have to find a way to filter
@@ -52,21 +51,23 @@ function editJSON(data, elmID, nodeType) {
                     var attrs = Object.keys(item.attributes);
                     var attrVals = Object.values(item.attributes);
                     var dl = document.createElement("form");
+                    dl.setAttribute("id", item.name)
+                    dl.setAttribute("action","http://localhost:8080/sheet/1")
+                    dl.setAttribute("method", "post")
 
-
-                    for (let i = 0; i < attrs.length; i++) {
-                        var dt = document.createElement("dt");
-                        dt.innerHTML = attrs[i];
-                        dl.appendChild(dt);
-                        var entr = document.createElement("input");
-                        entr.setAttribute("id", attrs[i])
-                        entr.defaultValue = attrVals[i];
-                        dl.appendChild(entr);
-                    }
-
+                        for (let i = 0; i < attrs.length; i++) {
+                            var dt = document.createElement("dt");
+                            dt.innerHTML = attrs[i];
+                            dl.appendChild(dt);
+                            var entr = document.createElement("input");
+                            entr.setAttribute("id", attrs[i]);
+                            entr.setAttribute("name", attrs[i]);
+                            entr.defaultValue = attrVals[i];
+                            dl.appendChild(entr);
+                        }
                     var s = document.createElement("input");
                     s.setAttribute("type", "submit");
-                    s.setAttribute("onclick", "getValue('"+item.name+"','"+Object.keys(item.attributes)+"');")
+                    //s.setAttribute("onclick", "getValue('"+item.name+"','"+Object.keys(item.attributes)+"');")
                     dl.appendChild(s);
                 }
 
@@ -157,22 +158,30 @@ function removeSpecialChars(str) {
 
 // Api sheet.json call
 
-fetch(url,
-    {
-        method: 'GET'
-    }
-) .then(response => response.json())
+function getSheet() {
+    fetch(url,
+        {
+            method: 'GET'
+        }
+    ).then(response => response.json())
 
-    .then(response => {
-        editJSON(response, "Core", "Core");
-        editJSON(response, "Magic", "Magic");
-        editJSON(response, "Cyber", "Cyber");
-        editJSON(response, "VehicleDrone", "VehicleDrone");
-        editJSON(response, "Notes", "Notes");
+        .then(response => {
+            makePage(response);
+        })
+}
 
-        const sheet = response;
-        JSON.stringify(sheet);
-        //sheet.inventory.push(some_item);
-        console.log(sheet);
-    });
+async function makePage(response){
+    editJSON(response, "Core", "Core");
+    editJSON(response, "Magic", "Magic");
+    editJSON(response, "Cyber", "Cyber");
+    editJSON(response, "VehicleDrone", "VehicleDrone");
+    editJSON(response, "Notes", "Notes");
+}
 
+function writeSheet(){
+    JSON.stringify(sheet);
+    //sheet.inventory.push(some_item);
+    console.log(sheet);
+}
+
+getSheet();
