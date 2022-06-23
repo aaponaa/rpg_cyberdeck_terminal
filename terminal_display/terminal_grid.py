@@ -23,16 +23,15 @@ class GridElement:
 
     def format(self, width: int) -> str:
         formatted = self.value
-        match self.alignment:
-            case Alignment.END:
-                formatted = self.value.rjust(width)
-            case Alignment.CENTER:
-                remaining_width = width - len(self.value)
-                left = remaining_width // 2
-                right = left + remaining_width % 2
-                formatted = " " * left + self.value + " " * right
-            case Alignment.START | _:
-                formatted = self.value.ljust(width)
+        if self.alignment == Alignment.END:
+            formatted = self.value.rjust(width)
+        elif self.alignment == Alignment.CENTER:
+            remaining_width = width - len(self.value)
+            left = remaining_width // 2
+            right = left + remaining_width % 2
+            formatted = " " * left + self.value + " " * right
+        else:
+            formatted = self.value.ljust(width)
 
         if self.color is None:
             return formatted

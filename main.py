@@ -1,5 +1,6 @@
 import os
-os.system('color')
+if os.name == 'nt':
+    os.system('color')
 from urllib.request import urlopen as uReq
 
 from bs4 import BeautifulSoup as soup
