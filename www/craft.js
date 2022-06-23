@@ -1,5 +1,5 @@
 
-const url ='http://localhost:8080/sheet/2'
+const url ='http://localhost:8080/sheet/1'
 
 function getValue (item, value){
     let inputValList = [];
