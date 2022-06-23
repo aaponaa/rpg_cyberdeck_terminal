@@ -239,8 +239,8 @@ class CyberTerminal:
     def __add_note(self):
         print(colored("Add note (ctrl-z to cancel)", "blue"))
 
-        note_name = inquirer.text(message="Name").execute()
-        note_content = inquirer.text(message="Content").execute()
+        note_name = inquirer.text(message="Name:").execute()
+        note_content = inquirer.text(message="Content:").execute()
         notes = self.__get__notes()
         notes.append({
             "name": note_name,
@@ -260,14 +260,15 @@ class CyberTerminal:
             message="Select notes to delete",
             choices=choices,
             cycle=True,
-            validate=lambda result: len(result) > 1,
+            validate=lambda result: len(result) >= 1,
             invalid_message="Select at least one note",
         ).execute()
 
-        for i in reversed(sorted(notes_to_delete)):
-            data = data[:i] + data[i + 1:]
+        if inquirer.confirm(message="Are you sure?", default=True).execute():
+            for i in reversed(sorted(notes_to_delete)):
+                data = data[:i] + data[i + 1:]
 
-        self.__save_notes(data)
+            self.__save_notes(data)
         self.notes()
 
     @staticmethod
