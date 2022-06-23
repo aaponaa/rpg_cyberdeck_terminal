@@ -99,8 +99,8 @@ class CyberTerminal:
         for line in self.shadow:
             print(colored(line, "green"))
         print(colored(self.sep, "red"))
-        print('')
         self.print_menu()
+        print('')
 
     def print_menu(self):
         menu_grid = TerminalGrid(default_color="green")
@@ -141,6 +141,7 @@ class CyberTerminal:
         self.print_header()
         if self.runner_sheet is not None:
             self.runner_sheet.display_monitor("green")
+            print('')
 
     def wiki(self, soup_list=None):
         it = 0
