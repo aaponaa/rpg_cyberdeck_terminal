@@ -85,16 +85,6 @@ class CyberTerminal:
                                   Command("delete", "Delete notes", lambda args: self.__delete_notes())])
         self.current_menu = None
 
-        # self.commands = OrderedDict()
-        # self.commands["home"] = Command("home", "Go back to home menu", lambda args: self.home())
-        # # self.commands["wiki"] = self.wiki
-        # self.commands["event"] = Command("event", "Go to event menu", self.event)
-        # self.commands["notes"] = Command("notes", "Open notes", self.notes)
-        # # if runner_sheet is not None:
-        # #     self.commands["runner"] = Command("runner", "Open runner sheet", self.runner)
-        # self.commands["help"] = Command("help", "Display available commands", lambda args: self.help())
-        # self.commands["exit"] = Command("exit", "Exit terminal", lambda args: self.logout())
-
     def __add_menu(self, name: str, commands: [Command] = None, on_enter: Any = None):
         self.menus[name] = Menu(name, commands=commands, on_enter=on_enter)
 
@@ -109,8 +99,7 @@ class CyberTerminal:
         for line in self.shadow:
             print(colored(line, "green"))
         print(colored(self.sep, "red"))
-        # for line in self.menu:
-        #     print(colored(line, "green"))
+        print('')
         self.print_menu()
 
     def print_menu(self):
@@ -153,25 +142,21 @@ class CyberTerminal:
         if self.runner_sheet is not None:
             self.runner_sheet.display_monitor("green")
 
-    def wiki(self, soup_list):
+    def wiki(self, soup_list=None):
         it = 0
 
         self.print_header()
-        for tab in soup_list:
-            if it == 0:
-                print(colored('                                           L <| ' + tab + ' |> R', "green"))
-                print(' ')
-            else:
-                print(str(it) + ' :' + tab)
-
-            it += 1
-        print('')
+        # for tab in soup_list:
+        #     if it == 0:
+        #         print(colored('                                           L <| ' + tab + ' |> R', "green"))
+        #         print(' ')
+        #     else:
+        #         print(str(it) + ' :' + tab)
+        #
+        #     it += 1
+        print('TODO')
 
     def event(self, *args):
-        # self.print_header()
-        # print('')
-        # print('There is no new events')
-        # print('')
         events = OrderedDict()
         events["Event 1"] = "This is the first event"
         events["Event 2"] = "This is the second event"
@@ -283,7 +268,6 @@ class CyberTerminal:
 
         self.__save_notes(data)
         self.notes()
-
 
     @staticmethod
     def logout():
