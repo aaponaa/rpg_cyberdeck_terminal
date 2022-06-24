@@ -1,17 +1,6 @@
 
 const url ='http://localhost:8080/sheet/1'
 
-function getValue (item, value){
-    let inputValList = [];
-    let namesList = value.split(',');
-    for (let a = 0; a < namesList.length; a++) {
-        var inputVal = document.getElementById(namesList[a]).value;
-        inputValList.push(inputVal);
-    }
-
-    alert(item +" : "+inputValList.toString());
-}
-
 function editJSON(data, elmID, nodeType) {
     try {
 
@@ -50,28 +39,27 @@ function editJSON(data, elmID, nodeType) {
                 if (item.attributes !== undefined ) {
                     var attrs = Object.keys(item.attributes);
                     var attrVals = Object.values(item.attributes);
-                    var dl = document.createElement("form");
-                    dl.setAttribute("id", item.name)
-                    dl.setAttribute("action","http://localhost:8080/sheet/1")
-                    dl.setAttribute("method", "post")
+                    var formu = document.createElement("form");
+                    formu.setAttribute("id", item.name)
+                    formu.setAttribute("action","http://localhost:8080/sheet/attr/1")
+                    formu.setAttribute("method", "post")
 
                         for (let i = 0; i < attrs.length; i++) {
                             var dt = document.createElement("dt");
                             dt.innerHTML = attrs[i];
-                            dl.appendChild(dt);
+                            formu.appendChild(dt);
                             var entr = document.createElement("input");
                             entr.setAttribute("id", attrs[i]);
                             entr.setAttribute("name", attrs[i]);
                             entr.defaultValue = attrVals[i];
-                            dl.appendChild(entr);
+                            formu.appendChild(entr);
                         }
                     var s = document.createElement("input");
                     s.setAttribute("type", "submit");
-                    //s.setAttribute("onclick", "getValue('"+item.name+"','"+Object.keys(item.attributes)+"');")
-                    dl.appendChild(s);
+                    formu.appendChild(s);
                 }
 
-                // Boxes
+                // Boxes CondMon Drone:Vehichule
                 if (item.Boxes !== undefined) {
                     var pB = document.createElement("p");
                     pB.className = "boxes";
@@ -85,15 +73,32 @@ function editJSON(data, elmID, nodeType) {
                 // Notes
                 if (item.Notes !== undefined) {
                     var p = document.createElement("p");
-                    p.innerHTML = "<strong>Notes:</strong> " + item.Notes;
+                    var textarea = document.createElement("textarea");
+                    textarea.setAttribute("name","notes")
+                    textarea.setAttribute("rows","10")
+                    textarea.setAttribute("cols", "50")
+                    p.appendChild(textarea);
+                    p.innerHTML = "<strong>Notes:</strong> ";
                 }
 
-                // Data grid
+                // Data grid Row in JSON
                 if (item.table !== undefined && item.row !== undefined) {
+                    var formu = document.createElement("form");
+                    formu.setAttribute("id", item.name);
+                    formu.setAttribute("action","http://localhost:8080/sheet/tab/1");
+                    formu.setAttribute("method", "post");
+
                     var table = document.createElement("table");
                     var caption = document.createElement("caption");
+
                     caption.innerHTML = item.table;
+                    formu.appendChild(table);
                     table.appendChild(caption);
+
+
+                    var but = document.createElement("input");
+                    but.setAttribute("type", "submit");
+                    formu.appendChild(s)
 
                     var tableHead = Object.keys(item.row[0]);
                     var tableRows = Object.values(item.row);
@@ -110,7 +115,11 @@ function editJSON(data, elmID, nodeType) {
                         var tr = table.insertRow(-1);
                         for (var k = 0; k < tableCells.length; k++) {
                             var tabCell = tr.insertCell(-1);
-                            tabCell.innerHTML = tableCells[k];
+                            var entr = document.createElement("input");
+                            let names = Object.keys(item.row[j]);
+                            entr.setAttribute("name", names[k]);
+                            entr.defaultValue = tableCells[k];
+                            tabCell.appendChild(entr)
                         }
                     }
                 }
@@ -125,7 +134,7 @@ function editJSON(data, elmID, nodeType) {
                 divContainer.appendChild(article);
                 article.appendChild(h2);
                 if (item.attributes !== undefined) {
-                    article.appendChild(dl);
+                    article.appendChild(formu);
                 }
                 if (item.Boxes !== undefined) {
                     article.appendChild(pB);
@@ -134,7 +143,7 @@ function editJSON(data, elmID, nodeType) {
                     article.appendChild(p);
                 }
                 if (item.table !== undefined && item.row !== undefined) {
-                    article.appendChild(table);
+                    article.appendChild(formu);
                 }
                 if (item.HTML !== undefined) {
                     article.appendChild(div);
@@ -166,22 +175,12 @@ function getSheet() {
     ).then(response => response.json())
 
         .then(response => {
-            makePage(response);
+            editJSON(response, "Core", "Core");
+            editJSON(response, "Magic", "Magic");
+            editJSON(response, "Cyber", "Cyber");
+            editJSON(response, "VehicleDrone", "VehicleDrone");
+            editJSON(response, "Notes", "Notes");
         })
-}
-
-async function makePage(response){
-    editJSON(response, "Core", "Core");
-    editJSON(response, "Magic", "Magic");
-    editJSON(response, "Cyber", "Cyber");
-    editJSON(response, "VehicleDrone", "VehicleDrone");
-    editJSON(response, "Notes", "Notes");
-}
-
-function writeSheet(){
-    JSON.stringify(sheet);
-    //sheet.inventory.push(some_item);
-    console.log(sheet);
 }
 
 getSheet();

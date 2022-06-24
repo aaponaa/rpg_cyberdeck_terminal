@@ -134,3 +134,4 @@ __pycache__
 .idea
 /www/terminal_api/node_modules/
 /www/.idea/
+/www/terminal_api/routes/test.js
