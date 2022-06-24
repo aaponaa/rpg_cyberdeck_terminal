@@ -81,8 +81,8 @@ class RunnerSheet:
                 3 + threshold % 5,
                 2 * (threshold // 5),
                 width=16)
-            condition_monitor_card.add(colored("| |", default_color), 3 + threshold % 5, 1 + 2 * (threshold // 5),
-                                       width=3)
+            condition_monitor_card.add(colored("|", default_color), 3 + threshold % 5, 1 + 2 * (threshold // 5),
+                                       width=1)
 
         for threshold in range(5):
             condition_monitor_card.add(
@@ -94,9 +94,9 @@ class RunnerSheet:
         attributes_card = TerminalGrid(default_color="green") \
             .add(" Attributs", 0, 0, colspan=5) \
             .add("", 1, 0, colspan=5) \
-            .add(" Physiques", 2, 0, width=13) \
-            .add(" Mentaux", 2, 1, width=13) \
-            .add(" Spéciaux", 2, 2, width=13) \
+            .add(" Physiques", 2, 0, width=10) \
+            .add(" Mentaux", 2, 1, width=10) \
+            .add(" Spéciaux", 2, 2, width=10) \
             .add("", 3, 0, colspan=5)
 
         attr_label = lambda k, v: (k + ": ") + (str(v) if v is not None else "")
