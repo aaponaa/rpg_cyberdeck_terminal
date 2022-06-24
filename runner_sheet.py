@@ -94,9 +94,9 @@ class RunnerSheet:
         attributes_card = TerminalGrid(default_color="green") \
             .add(" Attributs", 0, 0, colspan=5) \
             .add("", 1, 0, colspan=5) \
-            .add(" Physiques", 2, 0, width=10) \
-            .add(" Mentaux", 2, 1, width=10) \
-            .add(" Spéciaux", 2, 2, width=10) \
+            .add(" Physiques", 2, 0, width=11) \
+            .add(" Mentaux", 2, 1, width=11) \
+            .add(" Spéciaux", 2, 2, width=11) \
             .add("", 3, 0, colspan=5)
 
         attr_label = lambda k, v: (k + ": ") + (str(v) if v is not None else "")
@@ -111,13 +111,13 @@ class RunnerSheet:
             attributes_card.add("  " + attr_label(attr, self.attributes["special"][attr]), 4 + i, 2, width=10)
 
         attributes_card.add("INIT ", 4, 3)
-        attributes_card.add(attr_label("Physique", self.initiatives["physical"]), 5, 3, width=13)
-        attributes_card.add(attr_label("Matrice", self.initiatives["matrix"]), 6, 3, width=13)
-        attributes_card.add(attr_label("Astral", self.initiatives["astral"]), 7, 3, width=13)
+        attributes_card.add(attr_label("Physique", self.initiatives["physical"]), 5, 3, width=11)
+        attributes_card.add(attr_label("Matrice", self.initiatives["matrix"]), 6, 3, width=11)
+        attributes_card.add(attr_label("Astral", self.initiatives["astral"]), 7, 3, width=11)
         attributes_card.add("LIMITE ", 4, 4)
-        attributes_card.add(attr_label("Physique", self.limit["physical"]), 5, 4, width=13)
-        attributes_card.add(attr_label("Mentale", self.limit["mental"]), 6, 4, width=13)
-        attributes_card.add(attr_label("Sociale", self.limit["social"]), 7, 4, width=13)
+        attributes_card.add(attr_label("Physique", self.limit["physical"]), 5, 4, width=11)
+        attributes_card.add(attr_label("Mentale", self.limit["mental"]), 6, 4, width=11)
+        attributes_card.add(attr_label("Sociale", self.limit["social"]), 7, 4, width=11)
 
         for (l1, l2) in zip(condition_monitor_card.lines(), attributes_card.lines()):
             print("  " + l1 + " " + l2)
