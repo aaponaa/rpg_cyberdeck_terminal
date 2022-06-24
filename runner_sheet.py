@@ -27,7 +27,7 @@ class RunnerSheet:
             },
             "special": {
                 "CHC": None,
-                "Left": None,
+                "Left": 10,
                 "ESS": None,
                 "MAG": None
             }
@@ -39,7 +39,7 @@ class RunnerSheet:
         }
 
         self.limit = {
-            "physical": None,
+            "physical": 12,
             "mental": None,
             "social": None
         }
@@ -111,13 +111,13 @@ class RunnerSheet:
             attributes_card.add("  " + attr_label(attr, self.attributes["special"][attr]), 4 + i, 2, width=10)
 
         attributes_card.add("INIT ", 4, 3)
-        attributes_card.add(attr_label("Physique", self.initiatives["physical"]), 5, 3, width=11)
-        attributes_card.add(attr_label("Matrice", self.initiatives["matrix"]), 6, 3, width=11)
-        attributes_card.add(attr_label("Astral", self.initiatives["astral"]), 7, 3, width=11)
+        attributes_card.add(attr_label("Physique", self.initiatives["physical"]), 5, 3, width=12)
+        attributes_card.add(attr_label("Matrice", self.initiatives["matrix"]), 6, 3, width=12)
+        attributes_card.add(attr_label("Astral", self.initiatives["astral"]), 7, 3, width=12)
         attributes_card.add("LIMITE ", 4, 4)
-        attributes_card.add(attr_label("Physique", self.limit["physical"]), 5, 4, width=11)
-        attributes_card.add(attr_label("Mentale", self.limit["mental"]), 6, 4, width=11)
-        attributes_card.add(attr_label("Sociale", self.limit["social"]), 7, 4, width=11)
+        attributes_card.add(attr_label("Physique", self.limit["physical"]), 5, 4, width=12)
+        attributes_card.add(attr_label("Mentale", self.limit["mental"]), 6, 4, width=12)
+        attributes_card.add(attr_label("Sociale", self.limit["social"]), 7, 4, width=12)
 
         for (l1, l2) in zip(condition_monitor_card.lines(), attributes_card.lines()):
             print("  " + l1 + " " + l2)
