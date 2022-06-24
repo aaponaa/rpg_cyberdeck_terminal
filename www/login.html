@@ -6,21 +6,33 @@
   <meta charset="UTF-8">
   <title>CodePen - Shadowrun Character Sheet JSON</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Saira+Extra+Condensed:400,700" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
+<div class="bigGrid">
 <!-- partial:index.partial.html -->
 <header>
   <h1>Shadowrun&trade; Demo Sheet (JSON-powered)</h1>
 </header>
 
-<main>
+<div class="menu">
   <a href="character_page.html" >Mes Fiches</a>
   <a href="character_page.html" >Fiche Personage</a>
   <a href="craft_page.html">Modification de Fiche</a>
   <a href="login.html">Connection</a>
-</main>
+</div>
+
+<div class="login_grid">
+  <div class="login">
+    <form method="post" action="http://localhost:8080/users/login">
+      <h3>Login : </h3><input type="login" name="login" id="login">
+      <h3>Password : </h3><input type="password" name="password" id="password">
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </div>
+</div>
+</div>
 
 <footer>
 </footer>
@@ -28,4 +40,3 @@
 
 </body>
 </html>
-

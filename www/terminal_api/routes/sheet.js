@@ -1,8 +1,7 @@
 const express = require("express")
-const bodyParser = require("body-parser")
 const router = express.Router()
 const fs = require('fs')
-const sheet = require("../sheets/char_1.json");
+
 
 function saveSheet(sheet){
     // write JSON string to a file
@@ -15,12 +14,7 @@ function saveSheet(sheet){
     });
 }
 
-router.use(bodyParser.json())
-router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    extended: false
-}));
-
-router.get("/", (req, res) => {
+router.get("/",(req, res) => {
     console.log(req.query.name)
     res.send("Sheet List")
 })
@@ -81,7 +75,7 @@ router.post("/txt/:id",(req, res) => {
                 sheet.items[a].row = object;
             }
         }*/
-    }
+    }// TODO : Make the algo that store the data in sheet
     //saveSheet(sheet)
 })
 
@@ -108,4 +102,4 @@ router.delete((req, res) => {
     res.send(`Delete User With ID ${req.params.id}`)
     })
 
-module.exports = router
+module.exports = router;

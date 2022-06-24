@@ -16,6 +16,35 @@ textarea {
   height: 80px;
 }
 
+.bigGrid{
+  display: grid;
+}
+
+.menu{
+  margin: auto;
+  font-weight:800;
+  font-size: 20px;
+  color: #dcdde1;
+}
+
+a:active { text-decoration: none; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover {}
+
+
+.login_grid{
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 5px;
+}
+
+.login{
+  border-radius: 5px;
+  padding: 30px;
+}
+
   h1 {
     font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
     font-weight: bold;
