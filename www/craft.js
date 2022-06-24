@@ -1,5 +1,6 @@
 
-const url ='http://localhost:8080/sheet/1'
+const url ='http://localhost:8080/sheet/1';
+const id =1;
 
 function editJSON(data, elmID, nodeType) {
     try {
@@ -41,7 +42,7 @@ function editJSON(data, elmID, nodeType) {
                     var attrVals = Object.values(item.attributes);
                     var formu = document.createElement("form");
                     formu.setAttribute("id", item.name)
-                    formu.setAttribute("action","http://localhost:8080/sheet/attr/1")
+                    formu.setAttribute("action","http://localhost:8080/sheet/attr/"+id)
                     formu.setAttribute("method", "post")
 
                         for (let i = 0; i < attrs.length; i++) {
@@ -72,20 +73,28 @@ function editJSON(data, elmID, nodeType) {
 
                 // Notes
                 if (item.Notes !== undefined) {
-                    var p = document.createElement("p");
-                    var textarea = document.createElement("textarea");
-                    textarea.setAttribute("name","notes")
-                    textarea.setAttribute("rows","10")
-                    textarea.setAttribute("cols", "50")
-                    p.appendChild(textarea);
-                    p.innerHTML = "<strong>Notes:</strong> ";
+                    var formNotes = document.createElement("form");
+                    formNotes.setAttribute("id", item.name);
+                    formNotes.setAttribute("action","http://localhost:8080/sheet/txt/"+id);
+                    formNotes.setAttribute("method", "post");
+
+                    var textarea = document.createElement('textarea');
+                    textarea.setAttribute("name",item.name);
+                    textarea.defaultValue = item.Notes;
+                    formNotes.innerHTML = "<strong>Notes:</strong> ";
+                    formNotes.appendChild(textarea);
+
+                    var but = document.createElement("input");
+                    but.setAttribute("type", "submit");
+                    formNotes.appendChild(but)
+
                 }
 
                 // Data grid Row in JSON
                 if (item.table !== undefined && item.row !== undefined) {
                     var formu = document.createElement("form");
                     formu.setAttribute("id", item.name);
-                    formu.setAttribute("action","http://localhost:8080/sheet/tab/1");
+                    formu.setAttribute("action","http://localhost:8080/sheet/tab/"+id);
                     formu.setAttribute("method", "post");
 
                     var table = document.createElement("table");
@@ -98,7 +107,7 @@ function editJSON(data, elmID, nodeType) {
 
                     var but = document.createElement("input");
                     but.setAttribute("type", "submit");
-                    formu.appendChild(s)
+                    formu.appendChild(but)
 
                     var tableHead = Object.keys(item.row[0]);
                     var tableRows = Object.values(item.row);
@@ -140,7 +149,7 @@ function editJSON(data, elmID, nodeType) {
                     article.appendChild(pB);
                 }
                 if (item.Notes !== undefined) {
-                    article.appendChild(p);
+                    article.appendChild(formNotes);
                 }
                 if (item.table !== undefined && item.row !== undefined) {
                     article.appendChild(formu);

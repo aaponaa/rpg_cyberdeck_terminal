@@ -58,12 +58,31 @@ router.post("/tab/:id",(req, res) => {
         if (item.row !== undefined) {
             let rowsKey = Object.keys(item.row[0]);
             if (rowsKey.toString() === valueKeys.toString()) {
-                console.log(rowsKey + ' : ' + valueKeys)
                 sheet.items[a].row = object;
             }
         }
     }
     saveSheet(sheet)
+})
+router.post("/txt/:id",(req, res) => {
+    const data = req.body;
+    let sheet = require("../sheets/char_1.json");
+
+    for (let a = 0; a < sheet.items.length; a++) {
+        let item = sheet.items[a];
+        console.log(data)
+        if (item.table !== undefined && item.table === data.key){
+            console.log(item.Notes)
+        }
+        /*if (item.row !== undefined) {
+            let rowsKey = Object.keys(item.row[0]);
+            if (rowsKey.toString() === valueKeys.toString()) {
+                console.log(rowsKey + ' : ' + valueKeys)
+                sheet.items[a].row = object;
+            }
+        }*/
+    }
+    //saveSheet(sheet)
 })
 
 // HTML Attributs Data Formating

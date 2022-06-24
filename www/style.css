@@ -10,7 +10,12 @@ body {
     background-position: 50% 10em;
     background-size: contain;
   }
-  
+
+textarea {
+  width: 400px;
+  height: 80px;
+}
+
   h1 {
     font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
     font-weight: bold;
