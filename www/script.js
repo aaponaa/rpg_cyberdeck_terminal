@@ -144,7 +144,7 @@ function removeSpecialChars(str) {
 }
 
 // Api sheet.json call
-const url ='http://localhost:8080/sheet/1'
+const url ='http://localhost:8080/sheet/get/1'
 
 fetch(url,
     {

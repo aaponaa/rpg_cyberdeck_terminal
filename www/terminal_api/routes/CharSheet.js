@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const fs = require('fs');
-
 const VerifyToken = require("./VerifyToken")
 
 function saveSheet(sheet){
@@ -15,9 +14,32 @@ function saveSheet(sheet){
     });
 }
 
+const sheets =  [
+    {
+        id: "32",
+        path: "char_32.json",
+        user: "aaponaa"
+    },
+    {
+        id: "1",
+        path: "char_1.json",
+        user: "aaponaa"
+    },
+    {
+        id: "2",
+        path: "char_2.json",
+        user: "aaponaa"
+    },
+    {
+        id: "34",
+        path: "char_34.json",
+        user: "tonton"
+    },
+];
+
 router.get("/", VerifyToken,(req, res) => {
-    console.log(req.query.name)
-    res.send("Sheet List"+ req.user.login)
+    res.send("Welcome User: "+ req.user.login)
+    res.json(sheets.filter(sheets => sheets.user === req.user.login));
 });
 
 

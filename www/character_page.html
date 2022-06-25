@@ -19,9 +19,11 @@
     <a href="character_page.html" >Fiche Personage</a>
     <a href="craft_page.html">Modification de Fiche</a>
     <a href="login.html">Connection</a>
-  </div
+  </div>
 
 <main>
+
+  <input type="button" onclick="modify=true">
 
   <div id="Core">
     <p>
@@ -58,7 +60,14 @@
 <footer>
 </footer>
 <!-- partial -->
-  <script  src="./script.js"></script>
+  <script>
+    let modify = false;
+    if (!modify){
+      src="./script.js"
+    }else{
+      src="./craft.js"
+    }
+  </script>
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 
-const url ='http://localhost:8080/sheet/1';
+const url ='http://localhost:8080/sheet/get/1';
 const id =1;
 
 function editJSON(data, elmID, nodeType) {

@@ -13,35 +13,8 @@ const user ={
     email:"connard@gmail.com"
 };
 
-const sheets =  [
-    {
-        id: "32",
-        path: "char_32.json",
-        user: "aaponaa"
-    },
-    {
-        id: "1",
-        path: "char_1.json",
-        user: "aaponaa"
-    },
-    {
-        id: "2",
-        path: "char_2.json",
-        user: "aaponaa"
-    },
-    {
-        id: "34",
-        path: "char_34.json",
-        user: "tonton"
-    },
-];
-
 router.get("/", (req, res) => {
-    res.send("Users List")
-});
-
-router.get("/sheets", VerifyToken, (req,res) => {
-    res.json(sheets.filter(sheets => sheets.user === req.user.login));
+    res.redirect("/auth/login");
 });
 
 router.post("/register", (req, res) => {
@@ -75,10 +48,13 @@ router.post("/login", (req, res) => {
     }
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user)
-    res.send({
+    /*res.send({
         accessToken,
         refreshToken
-    });
+    });*/
+
+    res.cookie("token", accessToken)
+    res.end()
 })
 
 router.post('/refreshToken', (req,res) =>{

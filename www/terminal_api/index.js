@@ -17,7 +17,7 @@ const userRouter = require("./routes/AuthController")
 const jwt = require("jsonwebtoken");
 
 app.use("/sheet", sheetRouter)
-app.use("/users", userRouter)
+app.use("/auth", userRouter)
 
 app.listen(PORT, function(err){
     if (err) console.log(err);
