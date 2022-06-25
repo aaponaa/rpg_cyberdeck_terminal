@@ -4,6 +4,7 @@ const cors = require('cors');
 const PORT = 8080;
 const bodyParser = require("body-parser")
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: false
@@ -11,8 +12,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.use(cors());
 
-const sheetRouter = require("./routes/sheet")
-const userRouter = require("./routes/users")
+const sheetRouter = require("./routes/CharSheet")
+const userRouter = require("./routes/AuthController")
+const jwt = require("jsonwebtoken");
 
 app.use("/sheet", sheetRouter)
 app.use("/users", userRouter)

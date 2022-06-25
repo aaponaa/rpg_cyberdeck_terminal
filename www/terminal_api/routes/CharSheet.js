@@ -1,7 +1,8 @@
-const express = require("express")
-const router = express.Router()
-const fs = require('fs')
+const express = require("express");
+const router = express.Router();
+const fs = require('fs');
 
+const VerifyToken = require("./VerifyToken")
 
 function saveSheet(sheet){
     // write JSON string to a file
@@ -14,15 +15,16 @@ function saveSheet(sheet){
     });
 }
 
-router.get("/",(req, res) => {
+router.get("/", VerifyToken,(req, res) => {
     console.log(req.query.name)
-    res.send("Sheet List")
-})
+    res.send("Sheet List"+ req.user.login)
+});
 
-router.get("/:id",(req, res) => {
+
+router.get("/get/:id",(req, res) => {
     let sheet = require('../sheets/char_'+req.params.id+'.json');
     res.status(200).json(sheet);
-})
+});!
 
 // HTML Table Data Formatting
 router.post("/tab/:id",(req, res) => {
