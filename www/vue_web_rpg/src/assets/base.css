@@ -1,74 +1,565 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
 
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+body {
+  padding: .25em;
+  margin: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.4;
+  background-color: #fff;
+  color: #333;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2729/Shadowrun_bg.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 10em;
+  background-size: contain;
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+textarea {
+  width: 400px;
+  height: 80px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+.bigGrid{
+  display: grid;
+}
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+.menu{
+  margin: auto;
+  font-weight:800;
+  font-size: 20px;
+  color: #dcdde1;
+}
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+.menu a{
+  margin: 20px;
+  padding: 20px;
+}
+
+a:active { text-decoration: none; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover {
+  background-color: #dcdde1;
+  border-radius: 5px;
+}
+
+
+.login_grid{
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 5px;
+}
+
+.login{
+  border-radius: 5px;
+  padding: 30px;
+}
+
+h1 {
+  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+  font-weight: bold;
+  font-size: 200%;
+  margin: 0;
+  line-height: 1.0;
+}
+
+article {
+  margin: 2em 0;
+}
+
+@media print {
+  body, main {
+    margin: 0;
+    padding: 0;
+  }
+  article {
+    page-break-inside: avoid;
+  }
+  footer {
+    display: none;
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  font-weight: normal;
+@media screen and (min-width: 68em), print and (min-width: 6in) {
+  main > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em 2em;
+  }
 }
 
-body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media screen and (min-width: 80em), print and (min-width: 7in) {
+  main > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1em 2em;
+  }
+}
+
+@media print and (min-width: 6in) {
+  main > div {
+    grid-gap: 0.25in 0.25in;
+    margin: 0.25in 0;
+  }
+}
+
+h2 {
+  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+  font-weight: bold;
+  font-size: 150%;
+  line-height: 1.0;
+  /*   padding: 0.2em 1.5em 0.2em 0.4em; */
+  /*   background: linear-gradient(
+      -135deg,
+      transparent 0,
+      transparent 1.5em,
+      #5a0a0d 1.5em,
+      #5a0a0d 100%
+    ); */
+  margin: 0 0 0.5em 0;
+  border-bottom: .1rem solid #5a0a0d;
+  display: flex;
+}
+
+h2 span:first-child {
+  padding: 0.2em 0 0.2em 0.4em;
+  color: #fff;
+  background-color: #5a0a0d;
+}
+
+h2 span:last-child {
+  background: linear-gradient(
+          -135deg,
+          transparent 0,
+          transparent calc(100% - 1em),
+          #5a0a0d calc(100% - 1em),
+          #5a0a0d 100%
+  );
+  flex-grow: 1;
+}
+
+@media print {
+  body {
+    font-size: 6pt;
+    color: #000;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 30em) {
+  body {
+    padding: 1vw;
+  }
+  article {
+    border-left: 0.1rem solid #5a0a0d;
+  }
+  article > *:not(h2) {
+    margin-left: .5em;
+    margin-right: .5em;
+  }
+  h2 {
+    margin: 0 0 0.5em 0;
+  }
+}
+
+@media print {
+  h2 {
+    background: transparent;
+    color: #000;
+    border-bottom: 0.1em solid #000;
+  }
+  h2 span:first-child {
+    background-color: #999;
+  }
+  h2 span:last-child {
+    background: linear-gradient(
+            -135deg,
+            transparent 0,
+            transparent calc(100% - 1em),
+            #999 calc(100% - 1em),
+            #999 100%
+    );
+  }
+  article {
+    border-left: none;
+    margin: 0;
+  }
+}
+
+p > strong:first-child {
+  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+  font-weight: bold;
+}
+
+p.boxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+p.boxes strong {
+  flex-basis: 100%;
+}
+
+p.boxes span {
+  flex: 0 0 auto;
+  height: auto;
+  padding: 0 .15em;
+  margin: 0;
+}
+
+p.boxes span:nth-of-type(3n) {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  /*  Disabled until anything other than WebKit supports it  */
+  /*   grid-template-columns: repeat(auto-fill, minmax(4em, 1fr)); */
+  grid-gap: 0.1em 0;
+}
+
+/* All these media queries can go away when other browsers support the minmax bits below. */
+@media all and (min-width: 28em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+  }
+  dt::after {
+    content: ":";
+  }
+}
+
+@media all and (min-width: 34em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  }
+}
+
+@media all and (min-width: 40em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto;
+  }
+}
+
+@media all and (min-width: 46em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto;
+  }
+}
+
+@media all and (min-width: 52em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto auto auto;
+  }
+}
+
+@media all and (min-width: 58em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto auto auto auto auto;
+  }
+}
+
+@media all and (min-width: 64em) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto auto auto auto auto auto auto;
+  }
+}
+
+@media screen and (min-width: 68em), print and (min-width: 7in) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto;
+  }
+}
+
+@media screen and (min-width: 70em), print and (min-width: 8in) {
+  dl {
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
+        auto auto auto auto auto auto;
+  }
+}
+
+@supports (grid-template-columns: repeat(auto-fill, minmax(4em, 1fr) minmax(4em, 1fr))) {
+  dl {
+    grid-template-columns: repeat(auto-fill, minmax(3.75em, 1fr) minmax(3.75em, 1fr));
+  }
+}
+
+dt {
+  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+  padding: 0 0.5em 0 0.25em;
+}
+
+table {
+  border-collapse: collapse;
+  width: calc(100% - 1em);
+  max-width: 100%;
+}
+
+table caption {
+  color: #f00;
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 0.2em 0.4em;
+  border-bottom: 0.02em solid #ccc;
+}
+
+th {
+  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+td {
+  vertical-align: top;
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+@media all and (min-width: 40em) {
+  article div > ul {
+    column-count: 2;
+    column-gap: 2em;
+  }
+}
+
+@media all and (min-width: 80em), print and (min-width: 9in) {
+  article div > ul {
+    column-count: 3;
+    column-gap: 2em;
+  }
+}
+
+/* Layout that must be customized for every set of blocks */
+
+@media screen and (min-width: 68em), print and (min-width: 6in) {
+  #Core {
+    grid-template-areas:
+        "C1  C3"
+        "C2  C5"
+        "C6  C9"
+        "C7  C9"
+        "C8  C9"
+        "C10 C4"
+        "C11 C4";
+  }
+  #Magic {
+    grid-template-areas:
+        "M1 M2";
+  }
+  #Cyber {
+    grid-template-areas:
+        "A1 A2";
+  }
+  #VehicleDrone {
+    grid-template-areas:
+        "V6 V4"
+        "V3 V2"
+        "V1 V1"
+        "V5 V7";
+  }
+  #Notes {
+    grid-template-areas:
+        "N2 N1";
+  }
+}
+
+@media screen and (min-width: 80em), print and (min-width: 7in) {
+  #Core {
+    grid-template-areas:
+        "C1  C1  C1  C1  C1  C1  C3  C3  C3  C3  C3  C3"
+        "C2  C2  C2  C2  C6  C6  C6  C6  C4  C4  C4  C4"
+        "C2  C2  C2  C2  C6  C6  C6  C6  C4  C4  C4  C4"
+        "C7  C7  C7  C7  C8  C8  C8  C8  C4  C4  C4  C4"
+        "C11 C11 C11 C11 C11 C11 C11 C11 C4  C4  C4  C4"
+        "C5  C5  C5  C5  C5  C10 C10 C10 C10 C10 C10 C10"
+        "C9  C9  C9  C9  C9  C9  C9  C9  C9  C9  C9  C9";
+  }
+  #Magic {
+    grid-template-areas:
+        "M1 M1 M1 M1 M1 M1 M2 M2 M2 M2 M2 M2";
+  }
+  #Cyber {
+    grid-template-areas:
+        "A1 A1 A1 A1 A2 A2 A2 A2 A2 A2 A2 A2";
+  }
+  #VehicleDrone {
+    grid-template-areas:
+        "V1 V1 V1 V1 V1 V1 V4 V4 V4 V4 V4 V4"
+        "V1 V1 V1 V1 V1 V1 V5 V5 V5 V5 V5 V5"
+        "V1 V1 V1 V1 V1 V1 V6 V6 V6 V6 V6 V6"
+        "V1 V1 V1 V1 V1 V1 V7 V7 V7 V7 V7 V7"
+        "V2 V2 V2 V2 V2 V2 V3 V3 V3 V3 V3 V3";
+  }
+  #Notes {
+    grid-template-areas:
+        "N2 N2 N2 N2 N2 N2 N1 N1 N1 N1 N1 N1";
+  }
+}
+
+#PersonalData {
+  grid-area: C1;
+}
+
+#Attributes {
+  grid-area: C2;
+}
+
+#ConditionMonitor {
+  grid-area: C3;
+}
+
+#Skills {
+  grid-area: C4;
+}
+
+#IDLifestyleCurrency {
+  grid-area: C5;
+}
+
+#Armor {
+  grid-area: C6;
+}
+
+#RangedWeapons {
+  grid-area: C7;
+}
+
+#MeleeWeapons {
+  grid-area: C8;
+}
+
+#Qualities {
+  grid-area: C9;
+}
+
+#Contacts {
+  grid-area: C10;
+}
+
+#Gear {
+  grid-area: C11;
+}
+
+#Spells {
+  grid-area: M1;
+}
+
+#AdeptPowers {
+  grid-area: M2;
+}
+
+#Augmentation {
+  grid-area: A1;
+}
+
+#ProteusPoseidonRCC {
+  grid-area: A2;
+}
+
+#GMCBulldog {
+  grid-area: V1;
+}
+
+#GMNissanDoberman {
+  grid-area: V2;
+}
+
+#MCTNissanRotodrone {
+  grid-area: V3;
+}
+
+#MCTFlyspy {
+  grid-area: V4;
+}
+
+#HorizonNoizquito {
+  grid-area: V5;
+}
+
+#SonyNightingale {
+  grid-area: V6;
+}
+
+#MCTSevenSwims {
+  grid-area: V7;
+}
+
+#RiggingPools {
+  grid-area: N1;
+}
+
+#Background {
+  grid-area: N2;
+}
+
+#Augmentation table th:nth-child(3), #Augmentation table td:nth-child(3), #Armor table th:nth-child(3), #Armor table td:nth-child(3), #Qualities table th:nth-child(2), #Qualities table td:nth-child(2), #AdeptPowers table th:nth-child(2), #AdeptPowers table td:nth-child(2), #Contacts table th:nth-child(2), #Contacts table td:nth-child(2), #Contacts table th:nth-child(5), #Contacts table td:nth-child(5), #Skills table th:nth-child(2), #Skills table td:nth-child(2) {
+  text-align: left;
+}
+
+#Augmentation table th:nth-child(4), #Augmentation table td:nth-child(4) {
+  text-align: right;
+}
+
+#ConditionMonitor th:nth-child(2), #ConditionMonitor th:nth-child(3), #ConditionMonitor th:nth-child(5), #ConditionMonitor th:nth-child(6), #ConditionMonitor th:nth-child(8), #ConditionMonitor th:nth-child(9), #ConditionMonitor th:nth-child(11), #ConditionMonitor th:nth-child(12) {
+  color: transparent;
+  font-size: 70%;
+}
+
+#ConditionMonitor td:nth-child(4), #ConditionMonitor td:nth-child(7), #ConditionMonitor td:nth-child(10), #ConditionMonitor td:nth-child(13) {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+#PersonalData dl, #IDLifestyleCurrency dl {
+  grid-template-columns: auto auto auto auto;
+}
+
+#Attributes dl {
+  grid-template-columns: auto auto auto auto;
+}
+#Attributes dd:nth-child(-n+20) {
+  font-size: 150%;
+  align-self: end;
+}
+#Attributes dt:nth-child(-n+20) {
+  align-self: end;
+}
+#Attributes *:nth-child(21), #Attributes *:nth-child(22), #Attributes *:nth-child(23), #Attributes *:nth-child(24) {
+  margin-top: 1em;
+}
+
+#VehicleDrone {
+  page-break-before: always;
 }

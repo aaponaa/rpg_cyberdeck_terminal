@@ -54,6 +54,7 @@ router.post("/login", (req, res) => {
     });*/
 
     res.cookie("token", accessToken)
+    res.redirect("http://localhost:3000")
     res.end()
 })
 

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import TheWelcome from '@/components/TheWelcome.vue'
+import HomeInt from '@/components/HomeInt.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <HomeInt />
 </template>
