@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
-const VerifyToken = require("./VerifyToken")
+const VerifyToken = require("../modules/VerifyToken")
 
 
 const user ={
@@ -13,26 +13,10 @@ const user ={
     email:"connard@gmail.com"
 };
 
-router.get("/", (req, res) => {
-    res.redirect("/auth/login");
-});
-
-router.post("/register", (req, res) => {
-   const hashedPassword = bcrypt.hashSync(req.body.password, 8);
-
-       user.push({
-                id : Date.now().toString(),
-                login : req.body.login,
-               password : hashedPassword
-           }),
-           function (err, user) {
-               if (err) return res.status(500).send("There was a problem registering the user.")
-               // create a token
-               let token = generateAccessToken(user)
-               res.status(200).send({ auth: true, token: token });
-           }
-});
-
+router.get("/login",VerifyToken, (req,res) => {
+    console.log('Hello')
+    res.json(req.user);
+})
 
 // Looks for ath and give the token
 router.post("/login", (req, res) => {
@@ -49,7 +33,7 @@ router.post("/login", (req, res) => {
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user)
 
-    res.header("token", accessToken)
+    res.cookie('token',accessToken)
     res.end()
 })
 
@@ -69,6 +53,22 @@ router.post('/refreshToken', (req,res) =>{
             accessToken: refreshedToken,
         });
     });
+});
+
+router.post("/register", (req, res) => {
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
+    user.push({
+        id : Date.now().toString(),
+        login : req.body.login,
+        password : hashedPassword
+    }),
+        function (err, user) {
+            if (err) return res.status(500).send("There was a problem registering the user.")
+            // create a token
+            let token = generateAccessToken(user)
+            res.status(200).send({ auth: true, token: token });
+        }
 });
 
 router.get('/logout', function(req, res) {

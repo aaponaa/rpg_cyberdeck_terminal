@@ -27,8 +27,8 @@ export default {
     const submit = async () => {
       await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
-        credentials: 'omit',
         headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
         body:JSON.stringify(data)
       });
       await router.push('/userpage');
@@ -37,6 +37,7 @@ export default {
       data,
       submit
     }
+
   }
 }
 </script>

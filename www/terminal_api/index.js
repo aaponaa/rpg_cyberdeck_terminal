@@ -3,18 +3,24 @@ const app = express();
 const cors = require('cors');
 const PORT = 8080;
 const bodyParser = require("body-parser")
+const trustedHost = ["http://localhost:3000"]
 
+const corsOptions = {
+    origin: trustedHost,
+    credentials: true
+};
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: false
 }));
 
-app.use(cors());
+
+app.use(cors(corsOptions));
 
 const sheetRouter = require("./routes/CharSheet")
 const userRouter = require("./routes/AuthController")
-const jwt = require("jsonwebtoken");
+
 
 app.use("/sheet", sheetRouter)
 app.use("/auth", userRouter)
