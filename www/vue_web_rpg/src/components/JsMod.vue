@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "CharMod"
+  name: "JsMod"
 }
 
 const url ='http://localhost:8080/sheet/get/1';

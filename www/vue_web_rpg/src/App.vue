@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
   <div class="wrapper">
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/user">Connection</RouterLink>
-      <RouterLink to="/char">Mes Fiches</RouterLink>
+      <RouterLink to="/login">Connection</RouterLink>
+      <RouterLink to="/register">Inscription</RouterLink>
+      <RouterLink to="/charview">Ma Fiche</RouterLink>
+      <RouterLink to="/charmod">Modif Fiche</RouterLink>
     </nav>
   </div>
   <div class="corp">

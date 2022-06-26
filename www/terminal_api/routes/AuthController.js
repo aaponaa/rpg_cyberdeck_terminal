@@ -23,7 +23,6 @@ router.post("/register", (req, res) => {
        user.push({
                 id : Date.now().toString(),
                 login : req.body.login,
-               email : req.body.email,
                password : hashedPassword
            }),
            function (err, user) {
@@ -48,14 +47,11 @@ router.post("/login", (req, res) => {
     }
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user)
-    /*res.send({
+
+    res.send({
         accessToken,
         refreshToken
-    });*/
-
-    res.cookie("token", accessToken)
-    res.redirect("http://localhost:3000")
-    res.end()
+    });
 })
 
 router.post('/refreshToken', (req,res) =>{

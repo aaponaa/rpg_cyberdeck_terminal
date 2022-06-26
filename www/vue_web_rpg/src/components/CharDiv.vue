@@ -1,9 +1,3 @@
-<script setup lang="ts">
-
-import CharMod from '@/components/CharMod.vue'
-import CharSheet from '@/components/CharSheet.vue'
-</script>
-
 <template>
   <main>
     <div id="Core">
@@ -37,9 +31,14 @@ import CharSheet from '@/components/CharSheet.vue'
       </p>
     </div>
   </main>
-  <CharSheet/>
 </template>
 
-<style>
+<script>
+export default {
+  name: "CharDiv"
+}
+</script>
+
+<style scoped>
 
 </style>

@@ -4,16 +4,9 @@
 
 <script>
 export default {
-  name: "ThePage"
+  name: "JsSheet"
 }
-// Verify the JSON is JSON
-// https://jsonformatter.curiousconcept.com/
-// Minify the JSON for use below
-// https://www.cleancss.com/json-minify/
-// Minify the HTML node
-// https://www.willpeavy.com/minifier/
-// Escape the HTML for the JSON
-// https://www.freeformatter.com/json-escape.html
+// TODO We need to refactor the ways this build up in veu interface
 
 function ParseJSON(data, elmID, nodeType) {
   try {

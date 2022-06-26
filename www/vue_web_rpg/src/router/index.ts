@@ -10,20 +10,36 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/char',
-      name: 'char',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/CharView.vue')
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/UserRegister.vue')
     },
     {
-      path: '/user',
-      name: 'user',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/UserView.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/UserLogin.vue')
+    },
+
+      // Need to be connected
+    {
+      path: '/charview',
+      name: 'charview',
+      component: () => import('../views/CharSheet.vue')
+    },
+    {
+      path: '/charmod',
+      name: 'charmod',
+      component: () => import('../views/CharMod.vue')
+    },
+    {
+      path: '/usersheets',
+      name: 'usersheets',
+      component: () => import('../views/UserSheets.vue')
+    },
+    {
+      path: '/userpage',
+      name: 'userpage',
+      component: () => import('../views/UserPage.vue')
     }
   ]
 })
