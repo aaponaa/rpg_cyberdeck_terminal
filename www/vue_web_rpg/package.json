@@ -9,6 +9,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16",
     "vuex": "^4.0.2"

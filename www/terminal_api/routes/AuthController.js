@@ -37,6 +37,7 @@ router.post("/register", (req, res) => {
 // Looks for ath and give the token
 router.post("/login", (req, res) => {
     // Authenticate User
+    console.log(req.body);
     if (req.body.login !== user.login){
         res.status(401).send('invalid credentials');
         return;
@@ -48,10 +49,8 @@ router.post("/login", (req, res) => {
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user)
 
-    res.send({
-        accessToken,
-        refreshToken
-    });
+    res.header("token", accessToken)
+    res.end()
 })
 
 router.post('/refreshToken', (req,res) =>{

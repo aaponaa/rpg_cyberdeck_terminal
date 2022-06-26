@@ -1,14 +1,15 @@
 
 <template>
-  <form @submit.prevent="submit">
-    <h1 class="h3 mb-3 fw-normal">Please register</h1>
-
-    <input v-model="data.name" class="form-control" placeholder="Name" required>
-
+  <div class="grid">
+  <form @submit.prevent="submit" class="log">
+    <h3>Please register</h3>
+    <label for="login">Login: </label>
+    <input v-model="data.login" class="form-control" placeholder="Name" required>
+    <label for="password">Password: </label>
     <input v-model="data.password" type="password" class="form-control" placeholder="Password" required>
-
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,12 +25,13 @@ export default {
     });
     const router = useRouter();
     const submit = async () => {
-      await fetch('http://localhost:8000/auth/register', {
+      console.log(data)
+      await fetch('http://localhost:8080/auth/register', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        body:JSON.stringify(data)
       });
-      await router.push('/login');
+      await router.push('/userpage');
     }
     return {
       data,
@@ -40,5 +42,8 @@ export default {
 </script>
 
 <style scoped>
+.log{
+  display: grid;
+}
 
 </style>

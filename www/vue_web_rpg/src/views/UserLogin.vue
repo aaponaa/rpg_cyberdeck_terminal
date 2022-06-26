@@ -1,24 +1,23 @@
 
 <template>
-  <form @submit.prevent="submit">
-    <h1>Please sign in</h1>
-
-    <input v-name="login" type="text" placeholder="Login" required>
-
-    <input name="password" type="password" placeholder="Password" required>
-
-    <button type="submit">Sign in</button>
-  </form>
+  <div class="grid">
+    <form @submit.prevent="submit" class="log">
+      <h3>Please sign in</h3>
+      <label for="login">Login: </label>
+      <input v-model="data.login" type="text" placeholder="Login" required>
+      <label for="password">Password: </label>
+      <input v-model="data.password" type="password" placeholder="Password" required>
+      <button type="submit">Submit</button>
+    </form>
+    </div>
 </template>
 
-
-<script setup lang="ts">
-
+<script lang="ts">
 import {reactive} from 'vue';
 import {useRouter} from "vue-router";
 
 export default {
-  name: "UserLogin",
+  name: "Login",
   setup() {
     const data = reactive({
       login: '',
@@ -28,11 +27,11 @@ export default {
     const submit = async () => {
       await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
+        credentials: 'omit',
         headers: {'Content-Type': 'application/json'},
-        credentials: 'include',
-        body: JSON.stringify(data)
+        body:JSON.stringify(data)
       });
-      await router.push('/');
+      await router.push('/userpage');
     }
     return {
       data,
@@ -40,19 +39,11 @@ export default {
     }
   }
 }
-
 </script>
 
+<style scoped>
 
-
-<style>
-
-.login_grid{
+.log{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.login{
-  grid-row: 2;
 }
 </style>

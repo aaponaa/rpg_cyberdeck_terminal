@@ -22,6 +22,15 @@ textarea {
   display: grid;
 }
 
+.grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.log{
+  grid-column: 2;
+  text-align: center;
+}
+
 .menu{
   margin: auto;
   font-weight:800;

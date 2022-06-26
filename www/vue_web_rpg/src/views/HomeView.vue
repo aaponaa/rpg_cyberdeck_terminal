@@ -2,6 +2,8 @@
 import HomeInt from '@/components/HomeInt.vue'
 </script>
 
+
+
 <template>
     <HomeInt />
 </template>
