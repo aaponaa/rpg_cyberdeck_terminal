@@ -33,8 +33,9 @@ router.post("/login", (req, res) => {
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user)
 
-    res.cookie('token',accessToken)
-    res.end()
+    console.log(accessToken);
+    res.json(accessToken);
+    res.end();
 })
 
 router.post('/refreshToken', (req,res) =>{

@@ -5,6 +5,7 @@
     <RouterLink to="/register">Inscription</RouterLink>
     <RouterLink to="/charview" >Ma Fiche</RouterLink>
     <RouterLink to="/charmod">Modif Fiche</RouterLink>
+    <RouterLink to="/userpage">Page Utilisateur</RouterLink>
   </nav>
 </template>
 

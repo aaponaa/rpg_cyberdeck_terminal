@@ -4,9 +4,9 @@
     <form @submit.prevent="submit" class="log">
       <h3>Please sign in</h3>
       <label for="login">Login: </label>
-      <input v-model="data.login" type="text" placeholder="Login" required>
+      <input v-model="value.login" type="text" placeholder="Login" required>
       <label for="password">Password: </label>
-      <input v-model="data.password" type="password" placeholder="Password" required>
+      <input v-model="value.password" type="password" placeholder="Password" required>
       <button type="submit">Submit</button>
     </form>
     </div>
@@ -15,31 +15,38 @@
 <script lang="ts">
 import {reactive} from 'vue';
 import {useRouter} from "vue-router";
+import axios from "axios";
+
+
 
 export default {
   name: "Login",
   setup() {
-    const data = reactive({
+    const value = reactive({
       login: '',
       password: ''
     });
     const router = useRouter();
     const submit = async () => {
-      await fetch('http://localhost:8080/auth/login', {
+      fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        credentials: 'include',
-        body:JSON.stringify(data)
-      });
+        body:JSON.stringify(value)
+      }).then(response => response.json())
+          .then(response => {
+            console.log(response)
+            axios.defaults.headers.common['Authorization'] = `Bearer ${response}`;
+          });
       await router.push('/userpage');
     }
     return {
-      data,
+      value,
       submit
     }
 
   }
 }
+
 </script>
 
 <style scoped>
