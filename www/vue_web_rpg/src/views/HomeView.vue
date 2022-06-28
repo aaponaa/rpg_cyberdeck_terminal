@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import HomeInt from '@/components/HomeInt.vue'
 </script>
 
 
 
 <template>
-    <HomeInt />
+  <h3>Here is your home where you have info about the project</h3>
 </template>

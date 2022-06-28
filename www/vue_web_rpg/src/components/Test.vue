@@ -4,12 +4,11 @@
 
 <script>
 export default {
-  name: "attributs"
+  name: "Test",
+  data: this.$store.allArticles.items
 }
 </script>
 
 <style scoped>
-
-
 
 </style>

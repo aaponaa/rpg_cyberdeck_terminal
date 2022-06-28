@@ -1,33 +1,20 @@
 import axios from "axios";
 
 const state ={
-    sheet: [
-        {
-            id : 1,
-            item: "Life"
-        },
-        {
-            id : 2,
-            item: "Assets"
-        },
-        {
-            id : 3,
-            item: "wesh"
-        },
-        {
-            id : 4,
-            item: "Tamer"
-        }
-    ]
+    sheet: []
 }
 const getters ={
     allArticles: state => state.sheet
 }
 const actions = {
-
+    async fetchSheet({ commit }){
+        const response = await axios.get('http://localhost:8080/sheet/get/1');
+        console.log(response.data.items)
+        commit('setSheet', response.data.items)
+    },
 }
 const mutations = {
-
+    setSheet: (state, sheet) => (state.sheet = sheet)
 }
 
 export default{

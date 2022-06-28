@@ -24,12 +24,12 @@ const router = createRouter({
     {
       path: '/charview',
       name: 'charview',
-      component: () => import('../views/CharSheet.vue')
+      component: () => import('../views/Old/CharSheet.vue')
     },
     {
       path: '/charmod',
       name: 'charmod',
-      component: () => import('../views/CharMod.vue')
+      component: () => import('../views/Old/CharMod.vue')
     },
     {
       path: '/usersheets',

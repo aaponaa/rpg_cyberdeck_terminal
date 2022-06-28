@@ -10,9 +10,10 @@
 </template>
 
 <script lang="ts">
-
+/*<v-img :src="currentLocaleImg" v-if="user"></v-img>*/
 </script>
 
 <style scoped>
+
 
 </style>
