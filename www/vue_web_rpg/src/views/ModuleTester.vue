@@ -42,7 +42,7 @@ export default {
   computed: {
     ...mapGetters(["allArticles"])},
   created() {
-    this.fetchSheet();
+    this.fetchSheet(); // TODO look why have a red underline XD
   },
 
 

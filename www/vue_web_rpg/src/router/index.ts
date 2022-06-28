@@ -32,11 +32,6 @@ const router = createRouter({
       component: () => import('../views/Old/CharMod.vue')
     },
     {
-      path: '/usersheets',
-      name: 'usersheets',
-      component: () => import('../views/UserSheets.vue')
-    },
-    {
       path: '/userpage',
       name: 'userpage',
       component: () => import('../views/UserPage.vue')
