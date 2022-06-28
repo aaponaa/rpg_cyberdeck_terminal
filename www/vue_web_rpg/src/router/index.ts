@@ -40,6 +40,11 @@ const router = createRouter({
       path: '/userpage',
       name: 'userpage',
       component: () => import('../views/UserPage.vue')
+    },
+    {
+      path: '/module',
+      name: 'module',
+      component: () => import('../views/ModuleTester.vue')
     }
   ]
 })
