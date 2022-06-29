@@ -72,7 +72,7 @@ h1 {
   line-height: 1.0;
 }
 
-article {
+.articles {
   margin: 2em 0;
 }
 
@@ -81,7 +81,7 @@ article {
     margin: 0;
     padding: 0;
   }
-  article {
+  .articles {
     page-break-inside: avoid;
   }
   footer {
@@ -161,10 +161,10 @@ h2 span:last-child {
   body {
     padding: 1vw;
   }
-  article {
+  .articles {
     border-left: 0.1rem solid #5a0a0d;
   }
-  article > *:not(h2) {
+  .articles > *:not(h2) {
     margin-left: .5em;
     margin-right: .5em;
   }
@@ -191,7 +191,7 @@ h2 span:last-child {
             #999 100%
     );
   }
-  article {
+  .articles {
     border-left: none;
     margin: 0;
   }
@@ -223,94 +223,7 @@ p.boxes span:nth-of-type(3n) {
   font-weight: bold;
 }
 
-dl {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  /*  Disabled until anything other than WebKit supports it  */
-  /*   grid-template-columns: repeat(auto-fill, minmax(4em, 1fr)); */
-  grid-gap: 0.1em 0;
-}
 
-/* All these media queries can go away when other browsers support the minmax bits below. */
-@media all and (min-width: 28em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-  }
-  dt::after {
-    content: ":";
-  }
-}
-
-@media all and (min-width: 34em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
-  }
-}
-
-@media all and (min-width: 40em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto;
-  }
-}
-
-@media all and (min-width: 46em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto;
-  }
-}
-
-@media all and (min-width: 52em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto auto auto;
-  }
-}
-
-@media all and (min-width: 58em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto auto auto auto auto;
-  }
-}
-
-@media all and (min-width: 64em) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto auto auto auto auto auto auto;
-  }
-}
-
-@media screen and (min-width: 68em), print and (min-width: 7in) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto;
-  }
-}
-
-@media screen and (min-width: 70em), print and (min-width: 8in) {
-  dl {
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto
-        auto auto auto auto auto auto;
-  }
-}
-
-@supports (grid-template-columns: repeat(auto-fill, minmax(4em, 1fr) minmax(4em, 1fr))) {
-  dl {
-    grid-template-columns: repeat(auto-fill, minmax(3.75em, 1fr) minmax(3.75em, 1fr));
-  }
-}
-
-dt {
-  font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;
-  font-weight: bold;
-}
-
-dd {
-  margin: 0;
-  padding: 0 0.5em 0 0.25em;
-}
 
 table {
   border-collapse: collapse;
@@ -357,14 +270,14 @@ ul {
 }
 
 @media all and (min-width: 40em) {
-  article div > ul {
+  .articles div > ul {
     column-count: 2;
     column-gap: 2em;
   }
 }
 
 @media all and (min-width: 80em), print and (min-width: 9in) {
-  article div > ul {
+  .articles div > ul {
     column-count: 3;
     column-gap: 2em;
   }

@@ -27,7 +27,7 @@ const sheets =  [
     },
     {
         id: "2",
-        path: "char_2.json",
+        path: "char_24.json",
         user: "aaponaa"
     },
     {

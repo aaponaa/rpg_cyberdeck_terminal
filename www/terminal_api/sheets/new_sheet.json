@@ -51,46 +51,9 @@
    {
       "card":"Core",
       "type":"",
-      "name":"Condition Monitor",
-      "attributes":{
-         "Overflow":"3"
-      },
-      "Notes":"For every 3 boxes of damage on any one damage track, the character takes a -1 Dice Pool modifier on tests; these modifiers are cumulative within and across damage tracks. See <em>Wound Modifiers<\/em> p.169.",
-      "table":"Condition Monitor",
-      "row":[
-         {
-            "Track":"Physical",
-            "&minus;⅓":"&#9711;",
-            "&minus;‌⅔":"&#9711;",
-            "&minus;1":"&#9711;",
-            "&minus;1⅓":"&#9711;",
-            "&minus;‌1⅔":"&#9711;",
-            "&minus;2":"&#9711;",
-            "&minus;2⅓":"&#9711;",
-            "&minus;‌2⅔":"&#9711;",
-            "&minus;3":"&#9711;",
-            "&minus;3⅓":"&#9711;"
-         },
-         {
-            "Track":"Mental",
-            "&minus;⅓":"&#9711;",
-            "&minus;‌⅔":"&#9711;",
-            "&minus;1":"&#9711;",
-            "&minus;1⅓":"&#9711;",
-            "&minus;‌1⅔":"&#9711;",
-            "&minus;2":"&#9711;",
-            "&minus;2⅓":"&#9711;",
-            "&minus;‌2⅔":"&#9711;",
-            "&minus;3":"&#9711;",
-            "&minus;3⅓":"&#9711;"
-         }
-      ]
-   },
-   {
-      "card":"Core",
-      "type":"",
       "name":"Skills",
       "table":"Skills",
+      "rowkeys": ["Name", "Attribute", "Rating", "Type"],
       "row":[
          {
             "Name":"Pilot Aircraft",
@@ -290,6 +253,7 @@
       "type":"",
       "name":"Armor",
       "table":"Armor",
+      "rowkeys": ["Armor", "Rating", "Notes"],
       "row":[
          {
             "Armor":"Armor Jacket: Fire 6, Chemical 4",
@@ -318,6 +282,7 @@
       "type":"",
       "name":"Ranged Weapons",
       "table":"Ranged Weapons",
+      "rowkeys": ["Weapon", "Dam", "Acc", "AP","Mode", "RC", "Ammo"],
       "row":[
          {
             "Weapon":"Ingram Smartgun X",
@@ -335,6 +300,7 @@
       "type":"",
       "name":"Melee Weapons",
       "table":"Melee Weapons",
+      "rowkeys": ["Weapon", "Reach", "Dam", "Acc", "AP"],
       "row":[
          {
             "Weapon":"Survival Knife",
@@ -350,6 +316,7 @@
       "type":"",
       "name":"Qualities",
       "table":"Qualities",
+      "rowkeys": ["Quality", "Notes", "Type"],
       "row":[
          {
             "Quality":"Burnout’s Way",
@@ -383,6 +350,7 @@
       "type":"",
       "name":"Contacts",
       "table":"Contacts",
+      "rowkeys": ["Type", "Name", "Loyalty", "Connection", "Favor"],
       "row":[
          {
             "Type":"Fixer",
@@ -454,6 +422,7 @@
       "name":"Spells",
       "Notes":"Hermetic: Logic + Willpower to resist Drain.",
       "table":"Spells",
+      "rowkeys": ["Spell", "Type", "Range", "Duration", "Drain"],
       "row":[
          {
             "Spell":"Stunbolt (Combat, p.284): Stun damage.",
@@ -518,6 +487,7 @@
       "type":"",
       "name":"Adept Powers",
       "table":"Adept Powers",
+      "rowkeys": ["Name", "Notes", "Rating"],
       "row":[
          {
             "Name":"Metabolic Control",
@@ -556,6 +526,7 @@
       "type":"",
       "name":"Augmentation",
       "table":"Augmentation",
+      "rowkeys": ["Augmentation", "Rating", "Notes", "Essence"],
       "row":[
          {
             "Augmentation":"Control Rig",
