@@ -138,3 +138,5 @@ __pycache__
 /www/.idea/
 /www/.idea/
 /www/vue_web_rpg/.vscode/
+/www/vue_web_rpg/package-lock.json
+/www/terminal_api/package-lock.json
