@@ -6,7 +6,7 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><RouterLink class="navi" to="/">Home</RouterLink></li>
-      <li><RouterLink class="navi" to="/module">Fiche</RouterLink></li>
+      <li><RouterLink class="navi" to="/sheet">Fiche</RouterLink></li>
     </ul>
 
     <div class="col-md-3 text-end">
@@ -37,6 +37,8 @@
   border-color: #5a0b0d;
   color: #5a0b0d;
 }
+
+
 
 </style>
 

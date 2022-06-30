@@ -22,6 +22,7 @@ export default {
       try {
         const {data} = await axios.get('http://localhost:8080/auth/login');
         message.value = `Hi ${data.login}`;
+        console.log(data)
       } catch (e) {
         await router.push('/login');
       }
@@ -31,6 +32,7 @@ export default {
       axios.defaults.headers.common['Authorization'] = '';
       await router.push('/login');
     }
+
     return {
       message,
       logout

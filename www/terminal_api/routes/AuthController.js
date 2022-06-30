@@ -10,7 +10,7 @@ const VerifyToken = require("../modules/VerifyToken")
 const user ={
     id:42,
     login:"aaponaa",
-    email:"connard@gmail.com"
+    sheets:["char_1.json"]
 };
 
 router.get("/login",VerifyToken, (req,res) => {

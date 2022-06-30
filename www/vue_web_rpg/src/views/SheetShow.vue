@@ -81,6 +81,9 @@ dl, dd, dt{
   padding-right: 5px;
 }
 
+.my-but{
+  border-color: #eeeeee;
+}
 
 
 </style>
