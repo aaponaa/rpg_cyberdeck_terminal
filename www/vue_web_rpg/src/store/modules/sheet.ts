@@ -4,7 +4,7 @@ const state ={
     sheet: []
 }
 const getters ={
-    allArticles: state => state.sheet
+    sheet: state => state.sheet
 }
 const actions = {
     async fetchSheet({ commit }){
