@@ -246,7 +246,21 @@
          "Nuyen":"139,050.66 ¥",
          "Licenses":"Gun ×3, Magic ×3, Drive ×6"
       },
-      "HTML":"<ul><li>Ben Toma: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4<\/li><li>James Itoh: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4, SAG<\/li><li>Harold Kanagawa: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4<\/li><li>Jon Hikaru: SIN 6, SMG License 6, Magic License 6, Drivers 6, Drone 6<\/ul>"
+      "rowkeys": ["Item"],
+      "row": [
+         {
+            "Item":"Ben Toma: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4"
+         },
+         {
+            "Item":"James Itoh: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4, SAG"
+         },
+         {
+            "Item":"Harold Kanagawa: SIN 4, SMG License 4, Magic License 4, Drivers 4, Drone 4"
+         },
+         {
+            "Item":"Jon Hikaru: SIN 6, SMG License 6, Magic License 6, Drivers 6, Drone 6"
+         }
+      ]
    },
    {
       "card":"Core",
@@ -258,22 +272,22 @@
          {
             "Armor":"Armor Jacket: Fire 6, Chemical 4",
             "Rating":"12",
-            "Notes":"Shock Frills, p.438"
+            "notes":"Shock Frills, p.438"
          },
          {
             "Armor":"Armor Clothing: Non-conductive 6",
             "Rating":"6",
-            "Notes":""
+            "notes":""
          },
          {
             "Armor":"Formfitting: Non-conductive 6",
             "Rating":"8",
-            "Notes":""
+            "notes":""
          },
          {
             "Armor":"Helmet",
             "Rating":"+2",
-            "Notes":""
+            "notes":""
          }
       ]
    },
@@ -320,27 +334,27 @@
       "row":[
          {
             "Quality":"Burnout’s Way",
-            "Notes":"Treat augmentation as Alphaware for Essence drain. SG.177",
+            "notes":"Treat augmentation as Alphaware for Essence drain. SG.177",
             "Type":"P"
          },
          {
             "Quality":"Focused Concentration",
-            "Notes":"Rating 3: Sustain a Force 3 spell without a -2 penalty. p.74",
+            "notes":"Rating 3: Sustain a Force 3 spell without a -2 penalty. p.74",
             "Type":"P"
          },
          {
             "Quality":"Allergy: Mild: Seafood",
-            "Notes":"-2 to physical tests while affected. p.78",
+            "notes":"-2 to physical tests while affected. p.78",
             "Type":"N"
          },
          {
             "Quality":"Insomnia",
-            "Notes":"Int + Will (4) to recover Stun at normal rate, otherwise at 2× rate. p.81",
+            "notes":"Int + Will (4) to recover Stun at normal rate, otherwise at 2× rate. p.81",
             "Type":"N"
          },
          {
             "Quality":"Spirit Bane: Fire",
-            "Notes":"May not obey a party member; will attack me first. p.85",
+            "notes":"May not obey a party member; will attack me first. p.85",
             "Type":"N"
          }
       ]
@@ -414,13 +428,78 @@
       "card":"Core",
       "type":"",
       "name":"Gear",
-      "HTML":"<ul><li>Commlink: Transys Avalon 6: biometric reader, sub-vocal mic. Rating 6<\/li><li>Glasses: low-light, vision mag, image link, SmartLink Rating 4<\/li><li>Ear buds: audio enhancement 3 Rating 3<\/li><li>Jammer, area Rating 4<\/li><li>Jammer, directional Rating 6<\/li><li>White noise generator Rating 6<\/li><li>Repair shop Rating 3<\/li><li>Respirator Rating 6<\/li><li>Spell Focus: Spellcasting: Manipulation. p.320 Rating 2<\/li><li>Medkit Rating 6<\/li><li>Qi focus: 1951 Nash \u201CCountry Club\u201D 2-door hardtop, chest, licensed (\u00D72) Rating 2<\/li><li>MagLock Passkey Rating 4<\/li><li>Sequencer Rating 6<\/li><li>Flashlight, Toolkit<\/li><li>Tag Eraser<\/li><li>Metal Restraints<\/li><li>Rope (50m), Survival Kit (van)<\/li><li>Rubber bullets (2 boxes, 200 rounds)<\/li><li>Cheap suit<\/li><li>Scuba gear + belt of 4 tanks<\/li><li>200 rounds regular ammo for Ingram Smartgun X<\/li><\/ul>"
+      "rowkeys": ["Item"],
+      "row":[
+         {
+            "Item":"Commlink: Transys Avalon 6: biometric reader, sub-vocal mic. Rating 6"
+         },
+         {
+            "Item":"Glasses: low-light, vision mag, image link, SmartLink Rating 4"
+         },
+         {
+            "Item":"Ear buds: audio enhancement 3 Rating 3"
+         },
+         {
+            "Item":"Jammer, area Rating 4"
+         },
+         {
+            "Item":"Jammer, directional Rating 6"
+         },
+         {
+            "Item":"White noise generator Rating 6"
+         },
+         {
+            "Item":"Repair shop Rating 3"
+         },
+         {
+            "Item":"Respirator Rating 6"
+         },
+         {
+            "Item":"Spell Focus: Spellcasting: Manipulation. p.320 Rating 2"
+         },
+         {
+            "Item":"Medkit Rating 6"
+         },
+         {
+            "Item":"Qi focus: 1951 Nash \u201CCountry Club\u201D 2-door hardtop, chest, licensed (\u00D72) Rating 2"
+         },
+         {
+            "Item":"MagLock Passkey Rating 4"
+         },
+         {
+            "Item":"Sequencer Rating 6"
+         },
+         {
+            "Item":"Flashlight, Toolkit"
+         },
+         {
+            "Item":"Tag Eraser"
+         },
+         {
+            "Item":"Metal Restraints"
+         },
+         {
+            "Item":"Rope (50m), Survival Kit (van)"
+         },
+         {
+            "Item":"Rubber bullets (2 boxes, 200 rounds)"
+         },
+         {
+            "Item":"Cheap suit"
+         },
+         {
+            "Item":"Scuba gear + belt of 4 tanks"
+         },
+         {
+            "Item":"200 rounds regular ammo for Ingram Smartgun X"
+         }
+      ]
    },
    {
       "card":"Magic",
       "type":"",
       "name":"Spells",
-      "Notes":"Hermetic: Logic + Willpower to resist Drain.",
+      "notes":"Hermetic: Logic + Willpower to resist Drain.",
       "table":"Spells",
       "rowkeys": ["Spell", "Type", "Range", "Duration", "Drain"],
       "row":[
@@ -491,32 +570,32 @@
       "row":[
          {
             "Name":"Metabolic Control",
-            "Notes":"Takes 3 hrs instead of 1 for fatigue / sleep deprivation damage. SG.172",
+            "notes":"Takes 3 hrs instead of 1 for fatigue / sleep deprivation damage. SG.172",
             "Rating":"—"
          },
          {
             "Name":"Hang Time",
-            "Notes":"+2 to climb; stick to wall for 10 minutes. SG.171",
+            "notes":"+2 to climb; stick to wall for 10 minutes. SG.171",
             "Rating":"2"
          },
          {
             "Name":"Astral Perception",
-            "Notes":"Dual-natured when used. p.309",
+            "notes":"Dual-natured when used. p.309",
             "Rating":"—"
          },
          {
             "Name":"Spell Resistance",
-            "Notes":"+2 to resistance tests. p.311",
+            "notes":"+2 to resistance tests. p.311",
             "Rating":"2"
          },
          {
             "Name":"Improved Ability",
-            "Notes":"Pilot Aircraft: +2 to skill. p.309",
+            "notes":"Pilot Aircraft: +2 to skill. p.309",
             "Rating":"2"
          },
          {
             "Name":"Improved Potential",
-            "Notes":"Raise physical limit by 1 (Qi focus ×2, 1951 Nash ‘Country Club’ 2-door hardtop, chest, licensed)",
+            "notes":"Raise physical limit by 1 (Qi focus ×2, 1951 Nash ‘Country Club’ 2-door hardtop, chest, licensed)",
             "Rating":"2"
          }
       ]
@@ -531,31 +610,31 @@
          {
             "Augmentation":"Control Rig",
             "Rating":"2",
-            "Notes":"Add rating to vehicle tests, Speed, Handling, reduce threshold for tests, built-in sim, p.452",
+            "notes":"Add rating to vehicle tests, Speed, Handling, reduce threshold for tests, built-in sim, p.452",
             "Essence":"1.6"
          },
          {
             "Augmentation":"Damage Compensator",
             "Rating":"2",
-            "Notes":"Ignore 2 boxes of damage for modifiers, p.460",
+            "notes":"Ignore 2 boxes of damage for modifiers, p.460",
             "Essence":"0.16"
          },
          {
             "Augmentation":"Hand",
             "Rating":"",
-            "Notes":"Capacity 4, obvious",
+            "notes":"Capacity 4, obvious",
             "Essence":"0.2"
          },
          {
             "Augmentation":"• Commlink",
             "Rating":"",
-            "Notes":"Takes up 2 in hand",
+            "notes":"Takes up 2 in hand",
             "Essence":"—"
          },
          {
             "Augmentation":"• Fingertip Compartment ×2",
             "Rating":"",
-            "Notes":"Takes up 1 in hand each, 1 holds microdrone",
+            "notes":"Takes up 1 in hand each, 1 holds microdrone",
             "Essence":""
          }
       ]
@@ -571,16 +650,43 @@
          "Noise Reduc":"4*",
          "Sharing":"1*"
       },
-      "Boxes":11,
-      "Notes":"Matrix Condition Monitor: 8 + (Device Rating / 2) = 11 (p.228). Resist with Device Rating + Firewall = 11.  p.267. RCC can handle up to 15 slaved drones (Device Rating × 3) (p.267). *Noise Reduction & Sharing combined cannot exceed device Device Rating (p.267). ",
+      "boxes":11,
+      "notes":"Matrix Condition Monitor: 8 + (Device Rating / 2) = 11 (p.228). Resist with Device Rating + Firewall = 11.  p.267. RCC can handle up to 15 slaved drones (Device Rating × 3) (p.267). *Noise Reduction & Sharing combined cannot exceed device Device Rating (p.267). ",
       "table":"Condition Monitor",
-      "HTML":"<ul><li>Mapsofts: LA (6), Las Vegas (6), Hong Kong (6)<\/li><li>Common: Encryption (+1 to Firewall)<\/li><li>Common: Signal Scrub (Noise Reduction 2)<\/li><li>Hacking: Armor (+2 to resist damage)<\/li><li>Hacking: Guard (reduce damage 1DV/Mark)<\/li><li>Hacking: Shell (+1 resist damage, stacks)<\/li><li>Hacking: Sneak (+2 resist Trace User)<\/li><li>Hacking: Wrapper (override Matrix icons)<\/li><\/ul>"
+      "rowkeys": ["Item"],
+      "row":[
+         {
+            "Item":"Mapsofts: LA (6), Las Vegas (6), Hong Kong (6)"
+         },
+         {
+            "Item":"Common: Encryption (+1 to Firewall)"
+         },
+         {
+            "Item":"Common: Signal Scrub (Noise Reduction 2)"
+         },
+         {
+            "Item":"Hacking: Armor (+2 to resist damage)"
+         },
+         {
+            "Item":"Hacking: Guard (reduce damage 1DV/Mark)"
+         },
+         {
+            "Item":"Hacking: Shell (+1 resist damage, stacks)"
+         },
+         {
+            "Item":"Hacking: Sneak (+2 resist Trace User)"
+         },
+         {
+            "Item":"Hacking: Wrapper (override Matrix icons)"
+         }
+      ]
+
    },
    {
       "card":"Notes",
       "type":"",
       "name":"Background",
-      "HTML":"<p>A skinny half-Japanese kid who grew up in Koreatown in LA, Ben always enjoyed tinkering and playing with RC toys. He did assorted technical jobs for local mechanic shops where he met a smuggler who eventually took him along on some small runs, mentoring him for a future career in the trade.<\/p><p>As Ben learned more and earned more, he saved up for a Control Rig and was introduced to some street docs through his smuggling mentor. Ben never realized he had magical ability until after the surgery. The doctors who performed the surgery did not tell him either \u2014 they just wanted to get paid and keep a relationship with the smuggling world.<\/p><p>Frustrated and disenchanted with the smugglers and doctors, Ben turned to learning about his magical abilities. As he grew in spellcasting and channeling adept powers he worked to combine these with his passion and skill for vehicles and drones.<\/p><p>Ben makes a good living by doing odd jobs, from simple mechanic work to the occasional driver. He maintains a good relationship with his former mentor, though it was not without its problems. Some of Ben\u2019s mentor\u2019s loyalty comes from a sense of responsibility for the street doc fiasco, even as Ben has turned it into an asset.<\/p>"
+      "notes":"A skinny half-Japanese kid who grew up in Koreatown in LA, Ben always enjoyed tinkering and playing with RC toys. He did assorted technical jobs for local mechanic shops where he met a smuggler who eventually took him along on some small runs, mentoring him for a future career in the trade. As Ben learned more and earned more, he saved up for a Control Rig and was introduced to some street docs through his smuggling mentor. Ben never realized he had magical ability until after the surgery. The doctors who performed the surgery did not tell him either \u2014 they just wanted to get paid and keep a relationship with the smuggling world. Frustrated and disenchanted with the smugglers and doctors, Ben turned to learning about his magical abilities. As he grew in spellcasting and channeling adept powers he worked to combine these with his passion and skill for vehicles and drones. Ben makes a good living by doing odd jobs, from simple mechanic work to the occasional driver. He maintains a good relationship with his former mentor, though it was not without its problems. Some of Ben\u2019s mentor\u2019s loyalty comes from a sense of responsibility for the street doc fiasco, even as Ben has turned it into an asset."
    }
 ]
 }

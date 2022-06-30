@@ -243,12 +243,6 @@ table caption {
   white-space: nowrap;
 }
 
-th,
-td {
-  text-align: center;
-  padding: 0.2em 0.4em;
-  border-bottom: 0.02em solid #ccc;
-}
 
 th {
   font-family: "Saira Extra Condensed", "Arial Narrow", sans-serif;

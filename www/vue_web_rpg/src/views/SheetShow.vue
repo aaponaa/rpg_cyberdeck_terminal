@@ -6,9 +6,12 @@
 
       <h2><span>{{items.name}}</span><span></span></h2>
 
+      <p v-if="items.notes !== undefined"><strong>Notes : </strong>{{ items.notes }}</p>
       <div v-if="items.attributes !== undefined " class="attributes">
-        <dl v-for="(value, keys) in items.attributes" :key="keys" class="items">
-          {{keys}}: <input name="keys" class="form-control" :value=value>
+        <dl>
+          <div v-for="(value, keys) in items.attributes" :key="keys" class="attri">
+            <dt>{{keys}}: </dt><dd><input name="keys" class="my-but" :value=value></dd>
+          </div>
         </dl>
       </div>
 
@@ -39,8 +42,7 @@ export default {
 
   name: "ModuleTester",
   methods: {
-    ...mapActions(['fetchSheet']),
-    ...mapActions(['columnNames'])
+    ...mapActions(['fetchSheet'])
   },
   computed: {
     ...mapGetters(["allArticles"])},
@@ -53,11 +55,32 @@ export default {
 
 <style scoped>
 
+.attri{
+
+}
+
+
 h2 span:first-child {
   padding: 0.1em 0 0.1em 0.3em;
   color: #fff;
   background-color: #5a0a0d;
 }
+
+dl{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.attri{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+}
+
+dl, dd, dt{
+  padding-right: 5px;
+}
+
 
 
 </style>

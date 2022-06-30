@@ -55,7 +55,7 @@
       "attributes":{
         "Overflow":"3"
       },
-      "Notes":"For every 3 boxes of damage on any one damage track, the character takes a -1 Dice Pool modifier on tests; these modifiers are cumulative within and across damage tracks. See <em>Wound Modifiers<\/em> p.169.",
+      "notes":"For every 3 boxes of damage on any one damage track, the character takes a -1 Dice Pool modifier on tests; these modifiers are cumulative within and across damage tracks. See <em>Wound Modifiers<\/em> p.169.",
       "table":"Condition Monitor",
       "row":[
         {
@@ -294,22 +294,22 @@
         {
           "Armor":"Armor Jacket: Fire 6, Chemical 4",
           "Rating":"12",
-          "Notes":"Shock Frills, p.438"
+          "notes":"Shock Frills, p.438"
         },
         {
           "Armor":"Armor Clothing: Non-conductive 6",
           "Rating":"6",
-          "Notes":""
+          "notes":""
         },
         {
           "Armor":"Formfitting: Non-conductive 6",
           "Rating":"8",
-          "Notes":""
+          "notes":""
         },
         {
           "Armor":"Helmet",
           "Rating":"+2",
-          "Notes":""
+          "notes":""
         }
       ]
     },
@@ -353,27 +353,27 @@
       "row":[
         {
           "Quality":"Burnout’s Way",
-          "Notes":"Treat augmentation as Alphaware for Essence drain. SG.177",
+          "notes":"Treat augmentation as Alphaware for Essence drain. SG.177",
           "Type":"P"
         },
         {
           "Quality":"Focused Concentration",
-          "Notes":"Rating 3: Sustain a Force 3 spell without a -2 penalty. p.74",
+          "notes":"Rating 3: Sustain a Force 3 spell without a -2 penalty. p.74",
           "Type":"P"
         },
         {
           "Quality":"Allergy: Mild: Seafood",
-          "Notes":"-2 to physical tests while affected. p.78",
+          "notes":"-2 to physical tests while affected. p.78",
           "Type":"N"
         },
         {
           "Quality":"Insomnia",
-          "Notes":"Int + Will (4) to recover Stun at normal rate, otherwise at 2× rate. p.81",
+          "notes":"Int + Will (4) to recover Stun at normal rate, otherwise at 2× rate. p.81",
           "Type":"N"
         },
         {
           "Quality":"Spirit Bane: Fire",
-          "Notes":"May not obey a party member; will attack me first. p.85",
+          "notes":"May not obey a party member; will attack me first. p.85",
           "Type":"N"
         }
       ]
@@ -452,7 +452,7 @@
       "card":"Magic",
       "type":"",
       "name":"Spells",
-      "Notes":"Hermetic: Logic + Willpower to resist Drain.",
+      "notes":"Hermetic: Logic + Willpower to resist Drain.",
       "table":"Spells",
       "row":[
         {
@@ -521,32 +521,32 @@
       "row":[
         {
           "Name":"Metabolic Control",
-          "Notes":"Takes 3 hrs instead of 1 for fatigue / sleep deprivation damage. SG.172",
+          "notes":"Takes 3 hrs instead of 1 for fatigue / sleep deprivation damage. SG.172",
           "Rating":"—"
         },
         {
           "Name":"Hang Time",
-          "Notes":"+2 to climb; stick to wall for 10 minutes. SG.171",
+          "notes":"+2 to climb; stick to wall for 10 minutes. SG.171",
           "Rating":"2"
         },
         {
           "Name":"Astral Perception",
-          "Notes":"Dual-natured when used. p.309",
+          "notes":"Dual-natured when used. p.309",
           "Rating":"—"
         },
         {
           "Name":"Spell Resistance",
-          "Notes":"+2 to resistance tests. p.311",
+          "notes":"+2 to resistance tests. p.311",
           "Rating":"2"
         },
         {
           "Name":"Improved Ability",
-          "Notes":"Pilot Aircraft: +2 to skill. p.309",
+          "notes":"Pilot Aircraft: +2 to skill. p.309",
           "Rating":"2"
         },
         {
           "Name":"Improved Potential",
-          "Notes":"Raise physical limit by 1 (Qi focus ×2, 1951 Nash ‘Country Club’ 2-door hardtop, chest, licensed)",
+          "notes":"Raise physical limit by 1 (Qi focus ×2, 1951 Nash ‘Country Club’ 2-door hardtop, chest, licensed)",
           "Rating":"2"
         }
       ]
@@ -560,31 +560,31 @@
         {
           "Augmentation":"Control Rig",
           "Rating":"2",
-          "Notes":"Add rating to vehicle tests, Speed, Handling, reduce threshold for tests, built-in sim, p.452",
+          "notes":"Add rating to vehicle tests, Speed, Handling, reduce threshold for tests, built-in sim, p.452",
           "Essence":"1.6"
         },
         {
           "Augmentation":"Damage Compensator",
           "Rating":"2",
-          "Notes":"Ignore 2 boxes of damage for modifiers, p.460",
+          "notes":"Ignore 2 boxes of damage for modifiers, p.460",
           "Essence":"0.16"
         },
         {
           "Augmentation":"Hand",
           "Rating":"",
-          "Notes":"Capacity 4, obvious",
+          "notes":"Capacity 4, obvious",
           "Essence":"0.2"
         },
         {
           "Augmentation":"• Commlink",
           "Rating":"",
-          "Notes":"Takes up 2 in hand",
+          "notes":"Takes up 2 in hand",
           "Essence":"—"
         },
         {
           "Augmentation":"• Fingertip Compartment ×2",
           "Rating":"",
-          "Notes":"Takes up 1 in hand each, 1 holds microdrone",
+          "notes":"Takes up 1 in hand each, 1 holds microdrone",
           "Essence":""
         }
       ]
@@ -601,7 +601,7 @@
         "Sharing":"1*"
       },
       "Boxes":11,
-      "Notes":"Matrix Condition Monitor: 8 + (Device Rating / 2) = 11 (p.228). Resist with Device Rating + Firewall = 11.  p.267. RCC can handle up to 15 slaved drones (Device Rating × 3) (p.267). *Noise Reduction & Sharing combined cannot exceed device Device Rating (p.267). ",
+      "notes":"Matrix Condition Monitor: 8 + (Device Rating / 2) = 11 (p.228). Resist with Device Rating + Firewall = 11.  p.267. RCC can handle up to 15 slaved drones (Device Rating × 3) (p.267). *Noise Reduction & Sharing combined cannot exceed device Device Rating (p.267). ",
       "table":"Condition Monitor",
       "HTML":"<ul><li>Mapsofts: LA (6), Las Vegas (6), Hong Kong (6)<\/li><li>Common: Encryption (+1 to Firewall)<\/li><li>Common: Signal Scrub (Noise Reduction 2)<\/li><li>Hacking: Armor (+2 to resist damage)<\/li><li>Hacking: Guard (reduce damage 1DV/Mark)<\/li><li>Hacking: Shell (+1 resist damage, stacks)<\/li><li>Hacking: Sneak (+2 resist Trace User)<\/li><li>Hacking: Wrapper (override Matrix icons)<\/li><\/ul>"
     },
@@ -622,7 +622,7 @@
         "Seats":"9"
       },
       "Boxes":20,
-      "Notes":"Condition Monitor: 12 + (Bod/2) = 20. p.463. Rigger control, tinted windows, medkit (5), toolkit, smuggling compartment, chameleon skin, concealed turret, Gridlink override, drone racks: micro, medium ×3 (1 landing).",
+      "notes":"Condition Monitor: 12 + (Bod/2) = 20. p.463. Rigger control, tinted windows, medkit (5), toolkit, smuggling compartment, chameleon skin, concealed turret, Gridlink override, drone racks: micro, medium ×3 (1 landing).",
       "table":"Armament",
       "row":[
         {
@@ -651,7 +651,7 @@
         "Sensor":"3"
       },
       "Boxes":8,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 8. p.466, Medium drone. External flexible weapon mount. Clearsight (from RCC) 3, Doberman Stealth 3, Doberman Maneuvering 3, AK-97 Targeting 3, Recoil comp = Body (4).",
+      "notes":"Condition Monitor: 6 + (Bod/2) = 8. p.466, Medium drone. External flexible weapon mount. Clearsight (from RCC) 3, Doberman Stealth 3, Doberman Maneuvering 3, AK-97 Targeting 3, Recoil comp = Body (4).",
       "table":"Armament",
       "row":[
         {
@@ -679,7 +679,7 @@
         "Sensor":"3"
       },
       "Boxes":8,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 8. p.466, Medium roto-drone ×2. Light fixed external weapon mount. Clearsight (from RCC) 3, Roto-Drone Stealth 3, RD Maneuvering 3, Ingram Smartgun Targeting 3, Recoil comp = Body (4).",
+      "notes":"Condition Monitor: 6 + (Bod/2) = 8. p.466, Medium roto-drone ×2. Light fixed external weapon mount. Clearsight (from RCC) 3, Roto-Drone Stealth 3, RD Maneuvering 3, Ingram Smartgun Targeting 3, Recoil comp = Body (4).",
       "table":"Armament",
       "row":[
         {
@@ -707,7 +707,7 @@
         "Sensor":"3"
       },
       "Boxes":7,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 7. p.466, Minidrone. Two of these, same configuration. Clearsight 3, Fly-Spy Stealth 3, Fly-Spy Manuevering 3, Fly-Spy Evasion 3."
+      "notes":"Condition Monitor: 6 + (Bod/2) = 7. p.466, Minidrone. Two of these, same configuration. Clearsight 3, Fly-Spy Stealth 3, Fly-Spy Manuevering 3, Fly-Spy Evasion 3."
     },
     {
       "card":"VehicleDrone",
@@ -723,7 +723,7 @@
         "Sensor":"3"
       },
       "Boxes":7,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.128, Microdrone. Can produce audio at 160db, strobe patterns. Strobes impose −2 looking in direction of drone, −1 with compensation. Speakers impose −2 for those in earshot, −1 if sound dampener."
+      "notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.128, Microdrone. Can produce audio at 160db, strobe patterns. Strobes impose −2 looking in direction of drone, −1 with compensation. Speakers impose −2 for those in earshot, −1 if sound dampener."
     },
     {
       "card":"VehicleDrone",
@@ -739,7 +739,7 @@
         "Sensor":"2"
       },
       "Boxes":7,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.129, Minidrone. Realistic features (1). Clearsight (from RCC) 3, Nightingale Stealth 3, Nightingale Maneuvering 3, requires Pilot Exotic Vehicle skill (default to Reaction)."
+      "notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.129, Minidrone. Realistic features (1). Clearsight (from RCC) 3, Nightingale Stealth 3, Nightingale Maneuvering 3, requires Pilot Exotic Vehicle skill (default to Reaction)."
     },
     {
       "card":"VehicleDrone",
@@ -755,7 +755,7 @@
         "Sensor":"1"
       },
       "Boxes":7,
-      "Notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.134, Small water drone."
+      "notes":"Condition Monitor: 6 + (Bod/2) = 7. R5.134, Small water drone."
     },
     {
       "card":"Notes",

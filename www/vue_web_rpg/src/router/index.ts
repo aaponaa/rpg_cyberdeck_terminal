@@ -22,24 +22,14 @@ const router = createRouter({
 
       // Need to be connected
     {
-      path: '/charview',
-      name: 'charview',
-      component: () => import('../views/Old/CharSheet.vue')
-    },
-    {
-      path: '/charmod',
-      name: 'charmod',
-      component: () => import('../views/Old/CharMod.vue')
-    },
-    {
       path: '/userpage',
       name: 'userpage',
       component: () => import('../views/UserPage.vue')
     },
     {
-      path: '/module',
-      name: 'module',
-      component: () => import('../views/ModuleTester.vue')
+      path: '/sheet',
+      name: 'sheet',
+      component: () => import('../views/SheetShow.vue')
     }
   ]
 })
