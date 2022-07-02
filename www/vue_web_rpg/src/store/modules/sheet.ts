@@ -10,7 +10,10 @@ const actions = {
     async fetchSheet({ commit }){
         const response = await axios.get('http://localhost:8080/sheet/get/1');
         console.log(response.data.items)
-        commit('setSheet', response.data.items)
+        commit('setSheet', response.data)
+    },
+    async updateSheet(sheet){
+        const response = await axios.post('http://localhost:8080/sheet/save/1', {sheet});
     },
 }
 const mutations = {

@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const PORT = 8080;
 const bodyParser = require("body-parser")
-const trustedHost = ["http://localhost:3000"]
+const trustedHost = ["http://localhost:3001","http://localhost:3000"]
 
 const corsOptions = {
     origin: trustedHost,

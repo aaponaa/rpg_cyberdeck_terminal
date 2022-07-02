@@ -22,6 +22,6 @@ import NavBar from "@/components/NavBar.vue";
 .sheet{
   margin: auto;
   padding: 12px;
-  max-width: 1400px;
+  max-width: 1500px;
 }
 </style>
