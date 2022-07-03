@@ -4,7 +4,6 @@ import functools
 
 from termcolor import colored
 
-
 class Alignment:
     CENTER = "center"
     START = "start"

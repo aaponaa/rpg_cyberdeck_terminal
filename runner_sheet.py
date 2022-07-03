@@ -33,8 +33,8 @@ class RunnerSheet:
             }
         }
         self.initiatives = {
-            "physical": None,
-            "matrix": None,
+            "physical": 12,
+            "matrix": 12,
             "astral": None
         }
 
@@ -92,23 +92,23 @@ class RunnerSheet:
                 width=16)
 
         attributes_card = TerminalGrid(default_color="green") \
-            .add(" Attributs", 0, 0, colspan=5) \
+            .add("Attributs", 0, 0, colspan=5) \
             .add("", 1, 0, colspan=5) \
-            .add(" Physiques", 2, 0, width=11) \
-            .add(" Mentaux", 2, 1, width=11) \
-            .add(" Spéciaux", 2, 2, width=11) \
+            .add("Physiques", 2, 0, width=10) \
+            .add("Mentaux", 2, 1, width=10) \
+            .add("Spéciaux", 2, 2, width=10) \
             .add("", 3, 0, colspan=5)
 
         attr_label = lambda k, v: (k + ": ") + (str(v) if v is not None else "")
 
         for (i, attr) in enumerate(["CON", "AGI", "REA", "FOR"]):
-            attributes_card.add("  " + attr_label(attr, self.attributes["physical"][attr]), 4 + i, 0, width=10)
+            attributes_card.add(" " + attr_label(attr, self.attributes["physical"][attr]), 4 + i, 0, width=10)
 
         for (i, attr) in enumerate(["VOL", "LOG", "INT", "CHA"]):
-            attributes_card.add("  " + attr_label(attr, self.attributes["mental"][attr]), 4 + i, 1, width=10)
+            attributes_card.add(" " + attr_label(attr, self.attributes["mental"][attr]), 4 + i, 1, width=10)
 
         for (i, attr) in enumerate(["CHC", "Left", "ESS", "MAG"]):
-            attributes_card.add("  " + attr_label(attr, self.attributes["special"][attr]), 4 + i, 2, width=10)
+            attributes_card.add(" " + attr_label(attr, self.attributes["special"][attr]), 4 + i, 2, width=10)
 
         attributes_card.add("INIT ", 4, 3)
         attributes_card.add(attr_label("Physique", self.initiatives["physical"]), 5, 3, width=12)
@@ -120,7 +120,7 @@ class RunnerSheet:
         attributes_card.add(attr_label("Sociale", self.limit["social"]), 7, 4, width=12)
 
         for (l1, l2) in zip(condition_monitor_card.lines(), attributes_card.lines()):
-            print("  " + l1 + " " + l2)
+            print("  " + l1 + "" + l2)
 
     def damage(self, dtype: str, nb: int = 1):
         if dtype == "physical":
