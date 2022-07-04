@@ -29,10 +29,9 @@
         </thead>
 
         <tbody>
-          <tr v-for="row in item.row" :key="item">
+          <tr v-for="(row, index) in item.row" :key="item" :name=index>
             <td v-for="key in item.rowkeys"><input name="keys" class="my-but" v-model="row[key]" @change="handleChange($event, row[key])"></td>
             <td class="delete"><button class="btn btn-theme btn-default btn-xs pull-left">X</button></td>
-
           </tr>
         </tbody>
 
@@ -64,6 +63,9 @@ export default {
       console.log("New value: " + value);
       this.updateSheet(this.$store.state.sheet)
     },
+    addRow(index){
+      console.log(index)
+    }
 
   },
   computed: {
