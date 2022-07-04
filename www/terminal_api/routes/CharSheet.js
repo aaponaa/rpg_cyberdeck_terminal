@@ -10,39 +10,27 @@ const sheets =  [
         user: "aaponaa"
     },
     {
-        id: "1",
-        path: "char_1.json",
-        user: "aaponaa"
-    },
-    {
-        id: "2",
-        path: "char_24.json",
-        user: "aaponaa"
-    },
-    {
         id: "34",
         path: "char_34.json",
         user: "tonton"
     },
 ];
 
-
-
 router.get("/", VerifyToken,(req, res) => {
     res.send("Welcome User: "+ req.user.login)
     res.json(sheets.filter(sheets => sheets.user === req.user.login));
 });
 
-
 router.get("/get/:id",(req, res) => {
     let sheet = require('../sheets/char_'+req.params.id+'.json');
     res.status(200).json(sheet);
+
 });
 
 // HTML Table Data Formatting
 router.post("/save/:id",(req, res) => {
-    const dataString = JSON.stringify(req.body);
-    console.log(dataString)
+    const dataString = JSON.stringify(req.body.getters.sheet);
+
     fs.writeFile('./sheets/char_1.json', dataString, (err) => {
         if (err) {
             throw err;

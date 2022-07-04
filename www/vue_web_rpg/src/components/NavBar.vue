@@ -25,7 +25,6 @@
 .navi{
   padding: 10px;
   color: #5a0b0d;
-  font-family: "Georgia", serif;
   font-size: 24px;
 
 }

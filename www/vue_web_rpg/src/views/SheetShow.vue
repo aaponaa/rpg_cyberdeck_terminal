@@ -21,43 +21,48 @@
       
       
       <table v-if="item.row" :key="item" class="table table-striped table-sm">
+
         <thead>
         <tr>
           <th scope="col" v-for="key in item.rowkeys" :key="key" class="col">{{ key }}</th>
         </tr>
         </thead>
-        <tbody>
-        <tr v-for="row in item.row" :key="item">
-          <td v-for="key in item.rowkeys"><input name="keys" class="my-but" v-model="row[key]" @change="handleChange($event, row[key])"></td>
-          <td class="delete"><button class="delbut">Del</button></td>
-        </tr>
-        </tbody>
-        <div class="addbut"><button class="delbut">Add</button></div>
-      </table>
-    </div>
 
-    
-    
+        <tbody>
+          <tr v-for="row in item.row" :key="item">
+            <td v-for="key in item.rowkeys"><input name="keys" class="my-but" v-model="row[key]" @change="handleChange($event, row[key])"></td>
+            <td class="delete"><button class="btn btn-theme btn-default btn-xs pull-left">X</button></td>
+
+          </tr>
+        </tbody>
+
+        <div class="but-grid">
+          <button v-on:click="add" class="btn btn-theme btn-default btn-xs pull-left">
+            +
+          </button>
+        </div>
+
+      </table>
+
+    </div>
   </div>
 
 </template>
 
 <script lang="ts">
+// TODO add a + img already in public
+
 import {mapGetters, mapActions} from "vuex";
-import axios from 'axios'
 
 export default {
 
-  name: "ModuleTester",
   methods: {
     ...mapActions(['fetchSheet']),
     ...mapActions(['updateSheet']),
 
     handleChange(event, value) {
       console.log("New value: " + value);
-      console.log(this.sheet)
-      // this.updateSheet(this.sheet)
-      // Todo: call back-end to update sheet
+      this.updateSheet(this.$store.state.sheet)
     },
 
   },
@@ -65,7 +70,7 @@ export default {
     ...mapGetters(["sheet"])
   },
   created() {
-    this.fetchSheet(); // TODO look why have a red underline XD
+    this.fetchSheet(); // TODO Find a solution to type it
     // Because the function does exist (it's extracted by the mapActions), but it's not explicitly declared so the IDE doesn't know?
   }
 }
@@ -75,14 +80,21 @@ export default {
 
 <style scoped>
 
+.sheet{
+  margin: auto;
+  padding: 12px;
+  max-width: 1500px;
+}
 
+.but-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: max-content;
+
+}
 
 .delete{
   width: 40px;
-}
-.delbut{
-  width: 40px;
-  border-color: #eeeeee;
 }
 
 h2 span:first-child {

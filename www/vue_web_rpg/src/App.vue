@@ -19,9 +19,4 @@ import NavBar from "@/components/NavBar.vue";
   display: grid;
 }
 
-.sheet{
-  margin: auto;
-  padding: 12px;
-  max-width: 1500px;
-}
 </style>
