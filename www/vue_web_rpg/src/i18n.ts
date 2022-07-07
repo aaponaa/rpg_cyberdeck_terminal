@@ -3,7 +3,6 @@ import messages from '@intlify/vite-plugin-vue-i18n/messages';
 import axios from "axios";
 
 export const availableLocales = ['en', 'fr']
-const availableLanguages = ['en', 'fr'];
 
 const LOCAL_STORAGE_LOCALE = "cyberdeck.locale";
 
