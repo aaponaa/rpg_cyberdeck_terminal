@@ -20,7 +20,7 @@ const i18n = createI18n({
 // Request interceptor to set Accept header as chosen locale
 axios.interceptors.request.use(request => {
     // @ts-ignore
-    request.headers.common.Accept = `${i18n.global.locale}`;
+    request.headers.common['Accept-Language'] = `${i18n.global.locale}`;
     return request;
 })
 
