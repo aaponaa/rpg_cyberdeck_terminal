@@ -12,32 +12,35 @@
         <dl>
           <div v-for="(value, key) in item.attributes" :key="key" class="attri">
             <dt>{{ key }}:</dt>
-            <dd><input name="keys" class="my-but" v-model="item.attributes[key]" @change="handleChange($event, item.attributes[key])"> </dd>
+            <dd><input name="keys" class="my-but" v-model="item.attributes[key]"
+                       @change="handleChange($event, item.attributes[key])"></dd>
           </div>
         </dl>
       </div>
 
 
-      
-      
       <table v-if="item.row" :key="item" class="table table-striped table-sm">
 
         <thead>
         <tr>
           <th scope="col" v-for="key in item.rowkeys" :key="key" class="col">{{ key }}</th>
+          <th></th>
         </tr>
         </thead>
 
         <tbody>
-          <tr v-for="(row, index) in item.row" :key="item" :name=index>
-            <td v-for="key in item.rowkeys"><input name="keys" class="my-but" v-model="row[key]" @change="handleChange($event, row[key])"></td>
-            <td class="delete"><button class="btn btn-theme btn-default btn-xs pull-left">X</button></td>
-          </tr>
+        <tr v-for="(row, index) in item.row" :key="item" :name=index>
+          <td v-for="key in item.rowkeys"><input name="keys" class="my-but" v-model="row[key]"
+                                                 @change="handleChange($event, row[key])"></td>
+          <td class="delete">
+            <button class="btn btn-theme btn-default btn-xs pull-left"><i class="bi bi-x"></i></button>
+          </td>
+        </tr>
         </tbody>
 
         <div class="but-grid">
           <button v-on:click="add" class="btn btn-theme btn-default btn-xs pull-left">
-            +
+            <i class="bi bi-plus"></i>
           </button>
         </div>
 
@@ -63,7 +66,7 @@ export default {
       console.log("New value: " + value);
       this.updateSheet(this.$store.state.sheet)
     },
-    addRow(index){
+    addRow(index) {
       console.log(index)
     }
 
@@ -82,20 +85,20 @@ export default {
 
 <style scoped>
 
-.sheet{
+.sheet {
   margin: auto;
   padding: 12px;
   max-width: 1500px;
 }
 
-.but-grid{
+.but-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: max-content;
 
 }
 
-.delete{
+.delete {
   width: 40px;
 }
 
@@ -125,9 +128,8 @@ dl, dd, dt {
   border: none;
   cursor: pointer;
   width: max-content;
-  background:url(../images/button/Reset2.png) no-repeat;
+  background: url(../images/button/Reset2.png) no-repeat;
 }
-
 
 
 </style>

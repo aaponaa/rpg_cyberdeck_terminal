@@ -1,0 +1,9 @@
+{
+  "navbar": {
+    "home": "Home",
+    "sheet": "Sheet",
+    "login": "Login",
+    "register": "Register"
+  },
+  "test": "Test EN"
+}

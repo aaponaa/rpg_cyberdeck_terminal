@@ -1,0 +1,9 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "sheet": "Fiche",
+    "login": "Connexion",
+    "register": "Inscription"
+  },
+  "test": "Test FR"
+}

@@ -1,14 +1,22 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "types": [
+      "@intlify/vite-plugin-vue-i18n/client"
+    ]
   },
-
   "references": [
     {
       "path": "./tsconfig.config.json"
