@@ -2,7 +2,7 @@
   "name": "vue_web_rpg",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "frontend-dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
@@ -19,13 +19,13 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/node": "^18.0.3",
+    "typescript": "~4.7.4",
     "@intlify/vite-plugin-vue-i18n": "^3.4.0",
-    "@types/node": "^16.11.41",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/tsconfig": "^0.1.3",
     "npm-run-all": "^4.1.5",
     "sass": "^1.53.0",
-    "typescript": "~4.7.4",
     "vite": "^2.9.12",
     "vue-tsc": "^0.38.1"
   }

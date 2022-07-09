@@ -25,19 +25,24 @@ router.get("/get/:id",(req, res) => {
     /*let sheet = require('../sheets/char_'+req.params.id+'.json');
     */
 
-    fs.readFile('./sheets/char_1.json', 'utf8', (err, data) => {
-
-        if (err) {
-            console.log(`Error reading file from disk: ${err}`);
-        } else {
-
-            // parse JSON string to JSON object
-            const sheet = JSON.parse(data);
-
-            res.status(200).json(sheet);
-        }
-
+    console.log("get sheet")
+    import('../data/sheets/char_1.json').then(json => {
+        res.status(200).json(json);
     });
+    // file;
+    // fs.readFile('./sheets/char_1.json', 'utf8', (err, data) => {
+    //
+    //     if (err) {
+    //         console.log(`Error reading file from disk: ${err}`);
+    //     } else {
+    //
+    //         parse JSON string to JSON object
+            // const sheet = JSON.parse(data);
+            //
+            // res.status(200).json(sheet);
+        // }
+
+    // });
 
 });
 
@@ -57,4 +62,4 @@ router.delete((req, res) => {
     res.send(`Delete User With ID ${req.params.id}`)
     });
 
-module.exports = router;
+export default router;
