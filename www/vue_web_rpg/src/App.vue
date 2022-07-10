@@ -4,20 +4,30 @@ import NavBar from "@/components/NavBar.vue";</script>
 
 <template>
   <div class="wrapper">
-    <NavBar/>
+    <template v-if="currentUser">
+      <NavBar/>
+    </template>
     <RouterView/>
   </div>
 </template>
 
 <script lang="ts">
 
-export default {
-  name: 'App'
-}
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  name: 'App',
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  }
+});
 </script>
 
 <style lang="scss">
 @import './assets/base.css';
+@import './assets/shadowrun.scss';
 //@import "./node_modules/bootstrap-icons/font/bootstrap-icons.scss";
 
 .wrapper {

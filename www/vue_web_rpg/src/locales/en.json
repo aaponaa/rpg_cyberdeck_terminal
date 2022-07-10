@@ -1,9 +1,11 @@
 {
-  "navbar": {
-    "home": "Home",
-    "sheet": "Sheet",
-    "login": "Login",
-    "register": "Register"
-  },
+  "home": "Home",
+  "sheet": "Sheet",
+  "login": "Log in",
+  "logout": "Log out",
+  "register": "Register",
+  "error": "An error occurred :(",
+  "username": "Username",
+  "password": "Password",
   "test": "Test EN"
 }

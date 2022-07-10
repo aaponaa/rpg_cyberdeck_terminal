@@ -1,48 +1,56 @@
 <template>
-  <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-        <use xlink:href="#bootstrap"/>
-      </svg>
-    </div>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li>
-          <RouterLink class="navi" to="/">{{ $t('navbar.home') }}</RouterLink>
-        </li>
-        <li>
-          <RouterLink class="navi" to="/sheet">{{ $t('navbar.sheet') }}</RouterLink>
-        </li>
-      </ul>
-
-    <div class="col-md-3 d-flex align-items-center text-end gap-2">
-        <template v-for="(availableLocale, index) in availableLocales" :key="availableLocale">
+  <nav class="navbar navbar-expand-lg bg-light sticky-top shadowrun">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+              aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <a class="navbar-brand" href="#"><img :src="logo" height="40" alt="Shadowrun"></a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <RouterLink class="nav-link" active-class="active" to="/">{{ $t('home') }}</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" active-class="active" to="/sheet">{{ $t('sheet') }}</RouterLink>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-1">
+          <template v-for="(availableLocale, index) in availableLocales" :key="availableLocale">
           <span class="locale" v-bind:class="{ active: locale === availableLocale}"
                 @click="selectLanguage(availableLocale)">
             {{ availableLocale.toUpperCase() }}
           </span>
-          <template v-if="index < availableLocales.length - 1"><span>|</span></template>
-        </template>
-<!--      </div>-->
-<!--      <div class="d-flex flex-row gap-1">-->
-        <button @click="$router.push('login')" type="button" class="btn btn-outline-primary">
-          {{ $t('navbar.login') }}
-        </button>
-        <button @click="$router.push('register')" type="button" class="btn btn-primary">
-          {{ $t('navbar.register') }}
-        </button>
-<!--      </div>-->
+            <template v-if="index < availableLocales.length - 1"><span>|</span></template>
+          </template>
+          <!--      </div>-->
+          <!--      <div class="d-flex flex-row gap-1">-->
+          <div class="ps-3">
+            <button @click="logout()" type="button" class="btn btn-primary" :title="$t('logout')">
+              <span><i class="bi bi-box-arrow-right"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
+
+  <!--  </header>-->
 </template>
 
 <script lang="ts">
 
 import i18n, {availableLocales, updateLocale} from "@/i18n";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: 'NavBar',
+  data() {
+    return {
+      logo: new URL('../assets/shadowrun_logo.png', import.meta.url)
+    };
+  },
   computed: {
     locale(): string {
       return i18n.global.locale
@@ -54,38 +62,34 @@ export default {
   methods: {
     selectLanguage(l: string): void {
       updateLocale(l);
+    },
+
+    logout(): void {
+      this.$store.dispatch('auth/logout');
     }
 
   }
-}
+});
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
-.navi {
-  padding: 10px;
+@import '../assets/shadowrun.scss';
+
+nav ul {
+  /*padding: 10px;*/
   color: #5a0b0d;
-  font-size: 24px;
+  font-size: 22px;
 
 }
 
-.btn-primary {
-  background-color: #5a0b0d;
-  border-color: #5a0b0d;
+.navbar-brand {
+  color: $primary;
 }
 
-.btn-outline-primary {
-  border-color: #5a0b0d;
-  color: #5a0b0d;
-}
-
-.btn-primary:hover, .btn-primary:active {
-  background-color: #723d3e;
-}
-
-.btn-outline-primary:hover, .btn-outline-primary:active {
-  background-color: #c4b7b7;
+.navbar-nav .nav-link.active, .navbar-nav .show > .nav-link {
+  color: $primary;
 }
 
 .locale:not(.active) {

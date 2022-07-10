@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from "body-parser";
-import sheetRouter from './routes/sheet-controller';
+import sheetRouter from './routes/sheet.controller';
 import {RouteConfig} from "@/modules/common/route-config";
 import {AuthRoutes} from "@/modules/auth/auth.route";
+import {SheetRoutes} from "@/routes/sheet.route";
 
 const app = express();
 const routes: Array<RouteConfig> = [];
@@ -22,12 +23,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.use(cors());
-app.use("/sheet", sheetRouter)
 // app.use("/auth", userRouter)
 routes.push(new AuthRoutes(app));
+routes.push(new SheetRoutes(app));
 
 app.listen(PORT, () => {
-    console.log(`[server]: Server is running at https://localhost:${PORT}`);
+    console.log(`[server]: Server is running at http://localhost:${PORT}`);
     routes.forEach((route: RouteConfig) => {
         console.log(`Routes configured for ${route.getName()}`)
     })

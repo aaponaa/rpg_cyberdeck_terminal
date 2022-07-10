@@ -88,7 +88,7 @@ export default {
 .sheet {
   margin: auto;
   padding: 12px;
-  max-width: 1500px;
+  max-width: 100vh;
 }
 
 .but-grid {

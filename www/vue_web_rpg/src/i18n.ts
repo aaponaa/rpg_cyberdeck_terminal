@@ -1,6 +1,6 @@
 import {createI18n} from "vue-i18n";
 import messages from '@intlify/vite-plugin-vue-i18n/messages';
-import axios from "axios";
+import axios from "@/axios";
 
 export const availableLocales = ['en', 'fr']
 
@@ -17,7 +17,7 @@ const i18n = createI18n({
     messages,
 })
 
-// Request interceptor to set Accept header as chosen locale
+// Request interceptor to set Accept-Language header as chosen locale
 axios.interceptors.request.use(request => {
     // @ts-ignore
     request.headers.common['Accept-Language'] = `${i18n.global.locale}`;

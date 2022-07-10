@@ -1,10 +1,12 @@
-import Vuex from 'vuex'
+import Vuex, {Store} from 'vuex'
 import sheet from "@/store/modules/sheet";
-import auth from '@/store/modules/auth'
+import {auth} from '@/modules/auth/auth.store'
 
-export default () => new Vuex.Store({
+const store: Store<any> = new Vuex.Store({
     modules: {
         sheet,
         auth
     }
-})
+});
+
+export default store;

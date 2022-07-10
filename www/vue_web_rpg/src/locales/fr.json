@@ -1,9 +1,11 @@
 {
-  "navbar": {
-    "home": "Accueil",
-    "sheet": "Fiche",
-    "login": "Connexion",
-    "register": "Inscription"
-  },
+  "home": "Accueil",
+  "sheet": "Fiche",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "register": "Inscription",
+  "error": "Une erreur s'est produite :(",
+  "username": "Nom d'utilisateur",
+  "password": "Mot de passe",
   "test": "Test FR"
 }

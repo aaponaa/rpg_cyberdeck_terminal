@@ -1,12 +1,8 @@
 import {NextFunction, Request, Response} from "express"
 import AuthService from "@/modules/auth/auth.service"
-import jwt from "jsonwebtoken"
-import debug, {IDebugger} from "debug"
 import Password from "../common/services/password"
-
-const jwtSecret: string = process.env.JWT_SECRET || "123456"
-const tokenExpirationInSeconds = 36000
-const log: IDebugger = debug("auth:controller")
+import JWT from "@/modules/auth/jwt";
+import {getLocale} from "@/modules/common/utils";
 
 class AuthController {
     constructor() {
@@ -16,24 +12,22 @@ class AuthController {
         const username = req.body.username
         const password = req.body.password
         return AuthService.findUser(username).then(user => {
-            log("user", user)
             if (user) {
                 return Password.comparePasswords(user.password, password).then(matches => {
                     if (!matches) {
-                        throw new Error("Invalid Password")
+                        return res.status(401).json();
                     } else {
-                        log("jwt Secret", jwtSecret)
-                        const token = jwt.sign(req.body, jwtSecret, {
-                            expiresIn: tokenExpirationInSeconds,
-                        })
                         return res.status(200).json({
                             username: user.username,
-                            token,
+                            ...JWT.generateTokens(req.body)
                         })
                     }
                 });
             } else {
-                return res.status(401);
+                let language = getLocale(req);
+                return res.status(401).json({
+                    error: require(`@/locales/${language}.json`)["login.failed"]
+                });
             }
         });
     }
@@ -43,18 +37,26 @@ class AuthController {
         const password = req.body.password
         return AuthService.findUser(username).then(user => {
             if (user) {
-                throw new Error("User Already Exists")
+                let language = getLocale(req);
+                return res.status(400).json({
+                    error: require(`@/locales/${language}.json`)["username.alreadyTaken"]
+                })
             } else {
                 return AuthService.createUser(username, password).then(newUser => {
-                    const token = jwt.sign({username, password}, jwtSecret, {
-                        expiresIn: tokenExpirationInSeconds,
-                    })
                     return res.status(200).json({
                         username: newUser.username,
-                        token,
+                        ...JWT.generateTokens(newUser)
                     })
                 })
             }
+        });
+    }
+
+    refresh(req: Request, res: Response, next: NextFunction): Promise<Response> {
+        return JWT.verifyRefreshToken(req.body.refreshToken).then(token => {
+            return res.status(200).json(token);
+        }, error => {
+            return res.status(403).json();
         });
     }
 }
