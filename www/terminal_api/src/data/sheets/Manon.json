@@ -1,0 +1,73 @@
+{
+  "characters": [
+    {
+      "campaign": "d7346190-251c-4c94-90a9-618ae69c7cb1",
+      "personalData": {
+        "name": "Léo",
+        "metatype": "human",
+        "ethnicity": [
+          "Caucasian"
+        ],
+        "age": 22,
+        "sex": "F",
+        "height": "1m69",
+        "weight": "61kg",
+        "streetCred": 0,
+        "notoriety": 1,
+        "publicAwareness": 1,
+        "karma": 0,
+        "totalKarma": 49
+      },
+      "attributes": {
+        "body": {
+          "value": 1,
+          "max": 6
+        },
+        "agility": {
+          "value": 1,
+          "max": 6
+        },
+        "reaction": {
+          "value": 1,
+          "max": 6
+        },
+        "strength": {
+          "value": 1,
+          "max": 6
+        },
+        "willpower": {
+          "value": 1,
+          "max": 6
+        },
+        "logic": {
+          "value": 1,
+          "max": 6
+        },
+        "intuition": {
+          "value": 1,
+          "max": 6
+        },
+        "charisma": {
+          "value": 1,
+          "max": 6
+        },
+        "edge": {
+          "value": 1,
+          "max": 6
+        },
+        "magic": {
+          "value": 1,
+          "max": 6
+        },
+        "essence": {
+          "value": 1,
+          "max": 6
+        },
+        "luck": {
+          "value": 1,
+          "max": 6
+        }
+      }
+    }
+  ]
+}

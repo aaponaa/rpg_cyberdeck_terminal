@@ -1,8 +1,9 @@
 import {NextFunction, Request, Response} from "express"
-import AuthService from "@/modules/auth/auth.service"
+import AuthService from "@/modules/users/user.service"
 import Password from "../common/services/password"
 import JWT from "@/modules/auth/jwt";
 import {getLocale} from "@/modules/common/utils";
+import TranslationService from "@/modules/common/translation.service";
 
 class AuthController {
     constructor() {
@@ -15,7 +16,7 @@ class AuthController {
             if (user) {
                 return Password.comparePasswords(user.password, password).then(matches => {
                     if (!matches) {
-                        return res.status(401).json();
+                        return res.sendStatus(401);
                     } else {
                         return res.status(200).json({
                             username: user.username,
@@ -24,9 +25,8 @@ class AuthController {
                     }
                 });
             } else {
-                let language = getLocale(req);
                 return res.status(401).json({
-                    error: require(`@/locales/${language}.json`)["login.failed"]
+                    error: TranslationService.translate(getLocale(req), "login.failed")
                 });
             }
         });
@@ -37,9 +37,8 @@ class AuthController {
         const password = req.body.password
         return AuthService.findUser(username).then(user => {
             if (user) {
-                let language = getLocale(req);
                 return res.status(400).json({
-                    error: require(`@/locales/${language}.json`)["username.alreadyTaken"]
+                    error: TranslationService.translate(getLocale(req), "username.alreadyTaken")
                 })
             } else {
                 return AuthService.createUser(username, password).then(newUser => {
@@ -56,7 +55,7 @@ class AuthController {
         return JWT.verifyRefreshToken(req.body.refreshToken).then(token => {
             return res.status(200).json(token);
         }, error => {
-            return res.status(403).json();
+            return res.sendStatus(403);
         });
     }
 }

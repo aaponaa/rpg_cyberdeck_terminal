@@ -6,16 +6,18 @@ type UserData = {
     users: User[];
 }
 
-class AuthService {
+class UserService {
 
     constructor() {
     }
 
-    findUser(username: string): Promise<User | undefined> {
+    findUsers(): Promise<User[]> {
         const res = require('@/data/users.json');
-        return new Promise<User | undefined>((resolve) => {
-            resolve(res.users.find(u => u.username === username));
-        })
+        return Promise.resolve(res.users);
+    }
+
+    findUser(username: string): Promise<User | undefined> {
+        return this.findUsers().then(users => users.find(u => u.username === username));
     }
 
     createUser(username: string, password: string): Promise<User> {
@@ -33,4 +35,4 @@ class AuthService {
     }
 }
 
-export default new AuthService();
+export default new UserService();

@@ -1,10 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from "body-parser";
-import sheetRouter from './routes/sheet.controller';
+import sheetRouter from './modules/sheet/sheet.controller';
 import {RouteConfig} from "@/modules/common/route-config";
 import {AuthRoutes} from "@/modules/auth/auth.route";
-import {SheetRoutes} from "@/routes/sheet.route";
+import {SheetRoutes} from "@/modules/sheet/sheet.route";
+import {CampaignRoutes} from "@/modules/campaign/campaign.route";
+import {UserRoutes} from "@/modules/users/user.route";
 
 const app = express();
 const routes: Array<RouteConfig> = [];
@@ -25,7 +27,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(cors());
 // app.use("/auth", userRouter)
 routes.push(new AuthRoutes(app));
+routes.push(new UserRoutes(app));
 routes.push(new SheetRoutes(app));
+routes.push(new CampaignRoutes(app));
 
 app.listen(PORT, () => {
     console.log(`[server]: Server is running at http://localhost:${PORT}`);

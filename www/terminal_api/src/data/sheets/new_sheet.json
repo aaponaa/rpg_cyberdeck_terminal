@@ -316,6 +316,7 @@
       "table":"Melee Weapons",
       "rowkeys": ["Weapon", "Reach", "Dam", "Acc", "AP"],
       "row":[
+         
          {
             "Weapon":"Survival Knife",
             "Reach":"—",

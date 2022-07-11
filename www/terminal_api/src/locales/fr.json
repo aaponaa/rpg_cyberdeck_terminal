@@ -1,4 +1,5 @@
 {
   "username.alreadyTaken": "Ce nom d'utilisateur est déjà utilisé",
-  "login.failed": "Nom d'utilisateur ou mot de passe invalide"
+  "login.failed": "Nom d'utilisateur ou mot de passe invalide",
+  "campaign.creation.invalidData": "Données de création de campagne invalides"
 }

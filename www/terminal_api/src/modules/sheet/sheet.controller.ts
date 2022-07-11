@@ -1,8 +1,9 @@
 import {NextFunction, Request, Response} from "express"
-import AuthService from "@/modules/auth/auth.service"
+import AuthService from "@/modules/users/user.service"
 import JWT from "@/modules/auth/jwt";
 import fs from "fs/promises"
 import {promisify} from "util";
+import SheetService from "@/modules/sheet/sheet.service";
 
 
 const sheets = [
@@ -70,7 +71,9 @@ class SheetController {
 
     sheets(req: Request, res: Response, next: NextFunction): Promise<Response> {
         // TODO
-        return Promise.resolve(res.status(200).json());
+        return SheetService.findSheetsForUser(req.params.name).then(sheets => {
+            return res.status(200).json(sheets);
+        });
     }
 
 }
