@@ -1,23 +1,18 @@
-import {NextFunction, Request, Response} from "express"
-import AuthService from "@/modules/users/user.service"
-import JWT from "@/modules/auth/jwt";
-import fs from "fs/promises"
-import {promisify} from "util";
-import SheetService from "@/modules/sheet/sheet.service";
-
+import { NextFunction, Request, Response } from 'express'
+import SheetService from '@/modules/sheet/sheet.service'
 
 const sheets = [
     {
-        id: "32",
-        path: "char_32.json",
-        user: "aaponaa"
+        id: '32',
+        path: 'char_32.json',
+        user: 'aaponaa',
     },
     {
-        id: "34",
-        path: "char_34.json",
-        user: "tonton"
+        id: '34',
+        path: 'char_34.json',
+        user: 'tonton',
     },
-];
+]
 
 //
 //
@@ -68,14 +63,12 @@ const sheets = [
 //     });
 
 class SheetController {
-
     sheets(req: Request, res: Response, next: NextFunction): Promise<Response> {
         // TODO
-        return SheetService.findSheetsForUser(req.params.name).then(sheets => {
-            return res.status(200).json(sheets);
-        });
+        return SheetService.findSheetsForUser(req.params.name).then((sheets) => {
+            return res.status(200).json(sheets)
+        })
     }
-
 }
 
-export default new SheetController();
+export default new SheetController()

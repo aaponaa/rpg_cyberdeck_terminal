@@ -3,7 +3,9 @@
     "src/**/*.json",
     "src/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
     "target": "ES6",
     "module": "CommonJS",

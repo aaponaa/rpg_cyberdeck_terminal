@@ -1,4 +1,4 @@
-import {Application} from "express"
+import { Application } from 'express'
 
 export abstract class RouteConfig {
     app: Application
