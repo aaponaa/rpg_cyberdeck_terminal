@@ -72,6 +72,16 @@ class JWT {
             res.status(401).json({ success: false, message: 'Unauthorized' })
         }
     }
+
+    getAuthenticatedUser(req: Request): Promise<string | undefined> {
+        const authHeader = req.headers.authorization
+        if (authHeader && authHeader !== 'null') {
+            const token = authHeader.replace('Bearer ', '')
+            const decoded: User = jwt.decode(token) as User
+            return Promise.resolve(decoded.username);
+        }
+        return Promise.resolve(undefined)
+    }
 }
 
 export default new JWT()

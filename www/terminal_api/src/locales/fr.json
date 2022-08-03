@@ -1,5 +1,9 @@
 {
-  "username.alreadyTaken": "Ce nom d'utilisateur est déjà utilisé",
-  "login.failed": "Nom d'utilisateur ou mot de passe invalide",
-  "campaign.creation.invalidData": "Données de création de campagne invalides"
+  "username.alreadyTaken": "This username is already taken",
+  "login.failed": "Login failed",
+  "campaign.creation.missingName": "Le nom de la campagne n'est pas spécifié",
+  "campaign.creation.missingDM": "Le MJ de la campagne n'est pas spécifié",
+  "campaign.creation.unknownDM": "Le MJ {0} n'existe pas",
+  "campaign.creation.unknownPlayer": "Le joueur {0} n'existe pas",
+  "campaign.creation.unknownSheet": "La fiche du joueur {0} n'existe pas"
 }

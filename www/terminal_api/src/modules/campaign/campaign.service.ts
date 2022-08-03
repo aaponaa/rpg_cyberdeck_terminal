@@ -1,5 +1,5 @@
 import fs from 'fs/promises'
-import { Campaign } from '@/modules/campaign/models/campaign.model'
+import { Campaign, CampaignPlayer } from '@/modules/campaign/models/campaign.model'
 import { v4 } from 'uuid'
 
 class CampaignService {
@@ -10,15 +10,15 @@ class CampaignService {
         return Promise.resolve(campaigns.campaigns)
     }
 
-    findCampaignsByDm(dm: string) {
+    findCampaignsByDm(dm: string): Promise<Campaign[]> {
         return this.findAllCampaigns().then((campaigns) => {
             return campaigns.filter((c) => c.dm === dm)
         })
     }
 
-    findCampaignsByPlayer(player: string) {
+    findCampaignsByPlayer(player: string): Promise<Campaign[]> {
         return this.findAllCampaigns().then((campaigns) => {
-            return campaigns.filter((c) => c.players.includes(player))
+            return campaigns.filter((c) => c.players.map(p => p.user).includes(player))
         })
     }
 

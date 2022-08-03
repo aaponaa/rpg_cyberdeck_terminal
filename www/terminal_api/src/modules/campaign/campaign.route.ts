@@ -11,6 +11,8 @@ export class CampaignRoutes extends RouteConfig {
     configureRoutes(): Application {
         this.app.route('/campaigns').get(JWT.authenticateJWT, CampaignController.campaigns)
         this.app.route('/campaigns').post(JWT.authenticateJWT, CampaignController.createCampaign)
+        this.app.route('/campaigns/:id').get(JWT.authenticateJWT, CampaignController.campaign)
+        this.app.route('/campaigns/:id').post(JWT.authenticateJWT, CampaignController.updateCampaign)
         return this.app
     }
 }

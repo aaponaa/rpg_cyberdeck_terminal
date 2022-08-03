@@ -1,4 +1,4 @@
-export enum SkillType {
+export enum Attributes {
     body = 'body',
     agility = 'agility',
     reaction = 'reaction',
@@ -13,7 +13,7 @@ export enum SkillType {
     luck = 'luck',
 }
 
-export type Skill = {
+export type Attribute = {
     value: number
     max: number
 }

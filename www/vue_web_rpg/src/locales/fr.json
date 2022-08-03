@@ -1,11 +1,33 @@
 {
   "home": "Accueil",
   "sheet": "Fiche",
+  "myCharacters": "Mes personnages",
   "login": "Connexion",
   "logout": "Déconnexion",
   "register": "Inscription",
   "error": "Une erreur s'est produite :(",
   "username": "Nom d'utilisateur",
   "password": "Mot de passe",
-  "test": "Test FR"
+  "test": "Test FR",
+  "campaign": "Campagne",
+  "none": {
+    "m": "Aucun",
+    "f": "Aucune"
+  },
+  "sheet": {
+    "metatype": {
+      "human": "Humain",
+      "elf": "Elfe",
+      "troll": "Troll",
+      "dwarf": "Nain",
+      "ork": "Orc"
+    },
+    "archetype": {
+      "mage": "Mage",
+      "decker": "Decker",
+      "samourai": "Samourai",
+      "technomancer": "Technomancien",
+      "adept": "Adepte"
+    }
+  }
 }

@@ -1,8 +1,9 @@
 {
   "username.alreadyTaken": "This username is already taken",
   "login.failed": "Login failed",
-  "campaign.creation.missingName": "Le nom de la campagne n'est pas spécifié",
-  "campaign.creation.missingDM": "Le MJ de la campagne n'est pas spécifié",
-  "campaign.creation.unknownDM": "Le MJ {0} n'existe pas",
-  "campaign.creation.unknownPlayer": "Le joueur {0} n'existe pas"
+  "campaign.creation.missingName": "Missing campaign name",
+  "campaign.creation.missingDM": "Missing campaign DM",
+  "campaign.creation.unknownDM": "DM {0} not found",
+  "campaign.creation.unknownPlayer": "Player {0} not found",
+  "campaign.creation.unknownSheet": "Sheet of player {0} not found"
 }

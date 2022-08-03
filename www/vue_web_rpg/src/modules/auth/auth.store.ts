@@ -1,9 +1,15 @@
 import AuthService from '@/modules/auth/auth.service'
 import router from '@/router'
+import { createStore } from 'vuex'
+import type { User } from '@/modules/common/models/user.model'
 
-const state = {
+export type AuthState = {
+    user: User
+}
+const state: AuthState = {
     user: AuthService.loggedInUser(),
 }
+
 const getters = {}
 const actions = {
     login({ commit }, user: { username: string; password: string }) {

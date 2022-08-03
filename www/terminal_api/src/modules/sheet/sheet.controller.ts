@@ -1,73 +1,51 @@
 import { NextFunction, Request, Response } from 'express'
 import SheetService from '@/modules/sheet/sheet.service'
-
-const sheets = [
-    {
-        id: '32',
-        path: 'char_32.json',
-        user: 'aaponaa',
-    },
-    {
-        id: '34',
-        path: 'char_34.json',
-        user: 'tonton',
-    },
-]
-
-//
-//
-// router.get("/", VerifyToken,(req, res) => {
-//     res.send("Welcome User: "+ req.user.login)
-//     res.json(sheets.filter(sheets => sheets.user === req.user.login));
-// });
-//
-// router.get("/get/:id", JWT, (req, res) => {
-//     /*let sheet = require('../sheets/char_'+req.params.id+'.json');
-//     */
-//
-//     console.log("get sheet")
-//     import('../data/sheets/char_1.json').then(json => {
-//         res.status(200).json(json);
-//     });
-//     // file;
-//     // fs.readFile('./sheets/char_1.json', 'utf8', (err, data) => {
-//     //
-//     //     if (err) {
-//     //         console.log(`Error reading file from disk: ${err}`);
-//     //     } else {
-//     //
-//     //         parse JSON string to JSON object
-//             // const sheet = JSON.parse(data);
-//             //
-//             // res.status(200).json(sheet);
-//         // }
-//
-//     // });
-//
-// });
-//
-// // HTML Table Data Formatting
-// router.post("/save/:id",(req, res) => {
-//     const dataString = JSON.stringify(req.body.getters.sheet);
-//
-//     fs.writeFile('./sheets/char_1.json', dataString, (err) => {
-//         if (err) {
-//             throw err;
-//         }
-//         console.log("JSON data is saved.");
-//     });
-// });
-//
-// router.delete((req, res) => {
-//     res.send(`Delete User With ID ${req.params.id}`)
-//     });
+import fs from 'fs'
+import Jwt from '@/modules/auth/jwt'
 
 class SheetController {
-    sheets(req: Request, res: Response, next: NextFunction): Promise<Response> {
-        // TODO
-        return SheetService.findSheetsForUser(req.params.name).then((sheets) => {
-            return res.status(200).json(sheets)
+    sheets(req: Request, res: Response, next: NextFunction) {
+        SheetService.findSheetsForUser(req.query.name as string).then((sheets) => {
+            res.json(sheets)
         })
+    }
+
+    sheet(req: Request, res: Response, next: NextFunction) {
+        SheetService.findSheet(req.params.id).then((sheet) => {
+            if (sheet) {
+                Jwt.getAuthenticatedUser(req).then((u) => {
+                    // res.json(sheet)
+                    let canSeeSheet = true;
+                                    if (!sheet.public) {
+                                        if (u !== sheet.user) {
+                                            if (u !== sheet.campaign.dm) {
+                                                canSeeSheet = false;
+                                            }
+                                        }
+                                    }
+                    if (!canSeeSheet) {
+                        res.sendStatus(403);
+                    } else {
+                        // res.json(sheet);
+                        res.sendStatus(403);
+                    }
+                })
+
+            } else {
+                res.sendStatus(404)
+            }
+        })
+    }
+
+    image(req: Request, res: Response, next: NextFunction) {
+        const path = SheetService.characterImagePath(req.params.id)
+        if (path) {
+            fs.readFile(path, {}, (err, data) => {
+                res.write(data)
+            })
+        } else {
+            res.sendStatus(404)
+        }
     }
 }
 

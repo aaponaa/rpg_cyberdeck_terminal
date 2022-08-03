@@ -1,31 +1,53 @@
-import { Sheet } from '@/modules/sheet/models/sheet.model'
+import { Sheet, SheetModel } from '@/modules/sheet/models/sheet.model'
 import fs from 'fs'
 import { Campaign } from '@/modules/campaign/models/campaign.model'
+import CampaignService from '@/modules/campaign/campaign.service'
 
 class SheetService {
-    findSheetsForUser(username: String): Promise<Sheet[]> {
-        return Promise.resolve(SheetService.userSheets(username))
+    public findSheetsForUser(username: string): Promise<SheetModel[]> {
+        return Promise.all(this.userSheetsId(username).map((id) => this.findSheet(id)))
     }
 
-    findSheetsForCampaign(campaignId: 'string'): Promise<Sheet[]> {
+    public findSheetsForCampaign(campaignId: string): Promise<SheetModel[]> {
         const campaigns = require('@/data/campaigns.json')['campaigns'] as Campaign[]
         const players = campaigns.find((c) => c.id === campaignId)?.players ?? []
-        const sheets = []
-        players.forEach((player) => {
-            sheets.push(...SheetService.userSheets(player).filter((s) => s.campaign === campaignId))
-        })
-        return Promise.resolve(sheets)
+        return Promise.all(players.filter((p) => p.character).map((p) => this.findSheet(p.character)))
     }
 
-    private static userSheets(username: String): Sheet[] {
-        const path = `src/data/sheets/${username}.json`
-        console.log(path)
-        if (fs.existsSync(path)) {
-            console.log('fdklfjdk')
-            return require(path)['characters'] as Sheet[]
+    public findSheet(id: string): Promise<SheetModel> {
+        const sheet = this.sheet(id)
+        if (sheet) {
+            return CampaignService.findCampaign(sheet.campaign).then((c) => {
+                return {
+                    ...sheet,
+                    campaign: c,
+                }
+            })
         } else {
-            console.log(':(')
+            return Promise.resolve(undefined)
+        }
+    }
+
+    private userSheetsId(username: string): string[] {
+        const path = `src/data/users/user-characters.json`
+        if (fs.existsSync(path)) {
+            return require(path)[username] ?? []
+        } else {
             return []
+        }
+    }
+
+    characterImagePath(id: string): string {
+        const sheet = this.sheet(id)
+        return `src/data/images/${sheet?.image ?? 'unknown.png'}`
+    }
+
+    private sheet(id: string): Sheet {
+        const path = `src/data/sheets/${id}.json`
+        if (fs.existsSync(path)) {
+            return require(path) as Sheet
+        } else {
+            return undefined
         }
     }
 }

@@ -1,0 +1,51 @@
+{
+  "sheet": {
+    "tabs": {
+      "general": "General",
+      "attributesAndSkills": "Attributes and Skills"
+    },
+    "personalData": "Personal Data",
+    "name": "Name",
+    "metatype": "Metatype",
+    "archetype": "Archetype",
+    "ethnicity": "Ethnicity",
+    "age": "Age",
+    "sex": "Sex",
+    "height": "Height",
+    "weight": "Weight",
+    "streetCred": "Street Cred",
+    "notoriety": "Notoriety",
+    "publicAwareness": "Public Awareness",
+    "karma": "Karma",
+    "totalKarma": "Total Karma",
+    "attributes": {
+      "label": "Attributes",
+      "body": "Body",
+      "agility": "Agility",
+      "reaction": "Reaction",
+      "strength": "Strength",
+      "willpower": "Willpower",
+      "logic": "Logic",
+      "intuition": "Intuition",
+      "charisma": "Charisma",
+      "technomancy": "Technomancy",
+      "magic": "Magic",
+      "essence": "Essence",
+      "luck": "Luck"
+    },
+    "metatype.type": {
+      "human": "Human",
+      "elf": "Elf",
+      "troll": "Troll",
+      "dwarf": "Dwarf",
+      "ork": "Ork"
+    },
+    "archetype.type": {
+      "mage": "Mage",
+      "decker": "Decker",
+      "samourai": "Samourai",
+      "technomancer": "Technomancer",
+      "adept": "Adept"
+    }
+  }
+}

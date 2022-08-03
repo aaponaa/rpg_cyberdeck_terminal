@@ -1,3 +1,73 @@
+<script setup lang='ts'>
+
+import { ORIGINAL_URL } from '@/modules/auth/auth.interceptors'
+import { computed, onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import type { StoreState } from '@/store'
+
+const name = 'Login'
+const store = useStore<StoreState>()
+const router = useRouter()
+const { t } = useI18n()
+
+const user = {
+    username: undefined,
+    password: undefined,
+}
+const loading = ref(false)
+const message = ref('')
+const banner = new URL('../assets/shadowrun.jpg', import.meta.url)
+
+const loggedIn = computed(() => !!store.state.auth.user)
+
+onMounted(() => {
+    if (loggedIn.value) {
+        router.push('/')
+    }
+})
+
+const handleLogin = (event: Event) => {
+    if (user.username && user.password) {
+        loading.value = true
+        store.dispatch('auth/login', user).then(
+            () => {
+                loading.value = false
+                const originalUrl = localStorage.getItem(ORIGINAL_URL)
+                if (originalUrl) {
+                    localStorage.removeItem(ORIGINAL_URL)
+                    router.push(originalUrl)
+                } else {
+                    router.push('/')
+                }
+            },
+            error => {
+                loading.value = false
+                message.value = error.response?.data?.error || error.toString()
+            },
+        )
+    }
+}
+
+
+const handleRegister = (event: Event) => {
+    if (user.username && user.password) {
+        loading.value = true
+        store.dispatch('auth/register', user).then(
+            () => {
+                loading.value = false
+                router.push('/')
+            },
+            error => {
+                loading.value = false
+                message.value = error.response?.data?.error || error.toString()
+            },
+        )
+    }
+}
+
+</script>
 <template>
     <div class='d-flex flex-row justify-content-center align-items-center shadowrun' style='height: 90vh'>
         <div class='login-container position-relative'>
@@ -49,71 +119,6 @@
     </div>
 
 </template>
-
-<script lang='ts'>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-    data() {
-        return {
-            user: {
-                username: undefined,
-                password: undefined,
-            },
-            loading: false,
-            message: '',
-            banner: new URL('../assets/shadowrun.jpg', import.meta.url),
-        }
-    },
-    computed: {
-        loggedIn(): boolean {
-            return !!this.$store.state.auth.user
-        },
-    }
-    ,
-    created() {
-        if (this.loggedIn) {
-            this.$router.push('/')
-        }
-    }
-    ,
-    methods: {
-        handleLogin(event: Event) {
-            if (this.user.username && this.user.password) {
-                this.loading = true
-                this.$store.dispatch('auth/login', this.user).then(
-                    () => {
-                        this.loading = false
-                        this.$router.push('/')
-                    },
-                    error => {
-                        this.loading = false
-                        this.message = error.response?.data?.error || error.toString()
-                    },
-                )
-            }
-        },
-
-        handleRegister(event: Event) {
-            if (this.user.username && this.user.password) {
-                this.loading = true
-                this.$store.dispatch('auth/register', this.user).then(
-                    () => {
-                        this.loading = false
-                        this.$router.push('/')
-                    },
-                    error => {
-                        this.loading = false
-                        console.log(error)
-                        this.message = error.response?.data?.error || error.toString()
-                        console.log(this.message)
-                    },
-                )
-            }
-        },
-    },
-})
-</script>
 
 <style scoped lang='scss'>
 

@@ -1,6 +1,7 @@
 export type PersonalData = {
     name: string
     metatype: string
+    archetype: string
     ethnicity: string[]
     age: number
     sex: 'F' | 'M' | 'X'

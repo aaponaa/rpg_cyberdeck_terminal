@@ -12,6 +12,7 @@ if (!availableLocales.includes(defaultLanguage)) {
 }
 
 const i18n = createI18n({
+    legacy: false,
     locale: defaultLanguage,
     globalInjection: true,
     messages,
@@ -27,7 +28,7 @@ axios.interceptors.request.use((request) => {
 export default i18n
 
 export function updateLocale(locale: string): void {
-    if (locale !== i18n.global.locale) {
+    if (locale !== i18n.global.locale.value) {
         localStorage.setItem(LOCAL_STORAGE_LOCALE, locale)
         location.reload()
     }

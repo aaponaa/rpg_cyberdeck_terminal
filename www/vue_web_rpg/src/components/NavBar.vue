@@ -1,3 +1,25 @@
+<script setup lang='ts'>
+
+import { useStore } from 'vuex'
+import type { StoreState } from '@/store'
+import { availableLocales, updateLocale } from '@/i18n'
+import { useI18n } from 'vue-i18n'
+
+const name = 'NavBar'
+const store = useStore<StoreState>()
+const { t, locale } = useI18n()
+const logo = new URL('../assets/shadowrun_logo.png', import.meta.url)
+
+const selectLanguage = (l: string) => {
+    updateLocale(l)
+}
+
+const logout = () => {
+    store.dispatch('auth/logout')
+}
+
+</script>
+
 <template>
 
     <nav class='navbar navbar-expand-lg bg-light sticky-top shadowrun'>
@@ -13,7 +35,8 @@
                         <RouterLink class='nav-link' active-class='active' to='/'>{{ $t('home') }}</RouterLink>
                     </li>
                     <li class='nav-item'>
-                        <RouterLink class='nav-link' active-class='active' to='/sheet'>{{ $t('sheet') }}</RouterLink>
+                        <RouterLink class='nav-link' active-class='active' to='/sheets'>{{ $t('myCharacters') }}
+                        </RouterLink>
                     </li>
                 </ul>
                 <div class='d-flex align-items-center gap-1'>
@@ -24,8 +47,6 @@
           </span>
                         <template v-if='index < availableLocales.length - 1'><span>|</span></template>
                     </template>
-                    <!--      </div>-->
-                    <!--      <div class="d-flex flex-row gap-1">-->
                     <div class='ps-3'>
                         <button @click='logout()' type='button' class='btn btn-primary' :title="$t('logout')">
                             <span><i class='bi bi-box-arrow-right'></i></span>
@@ -36,42 +57,7 @@
         </div>
     </nav>
 
-    <!--  </header>-->
 </template>
-
-<script lang='ts'>
-
-import i18n, { availableLocales, updateLocale } from '@/i18n'
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-    name: 'NavBar',
-    data() {
-        return {
-            logo: new URL('../assets/shadowrun_logo.png', import.meta.url),
-        }
-    },
-    computed: {
-        locale(): string {
-            return i18n.global.locale
-        },
-        availableLocales(): string[] {
-            return availableLocales
-        },
-    },
-    methods: {
-        selectLanguage(l: string): void {
-            updateLocale(l)
-        },
-
-        logout(): void {
-            this.$store.dispatch('auth/logout')
-        },
-
-    },
-})
-
-</script>
 
 <style scoped lang='scss'>
 

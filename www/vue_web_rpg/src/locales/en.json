@@ -1,11 +1,32 @@
 {
   "home": "Home",
-  "sheet": "Sheet",
+  "myCharacters": "My characters",
   "login": "Log in",
   "logout": "Log out",
   "register": "Register",
   "error": "An error occurred :(",
   "username": "Username",
   "password": "Password",
-  "test": "Test EN"
+  "test": "Test EN",
+  "campaign": "Campaign",
+  "none": {
+    "m": "None",
+    "f": "None"
+  },
+  "sheet": {
+    "metatype": {
+      "human": "Human",
+      "elf": "Elf",
+      "troll": "Troll",
+      "dwarf": "Dwarf",
+      "ork": "Ork"
+    },
+    "archetype": {
+      "mage": "Mage",
+      "decker": "Decker",
+      "samourai": "Samourai",
+      "technomancer": "Technomancer",
+      "adept": "Adept"
+    }
+  }
 }

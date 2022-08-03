@@ -4,11 +4,12 @@ import { getLocale } from '@/modules/common/utils'
 import TranslationService from '@/modules/common/translation.service'
 import { Campaign } from '@/modules/campaign/models/campaign.model'
 import AuthService from '@/modules/users/user.service'
+import SheetService from '@/modules/sheet/sheet.service'
 
 type ValidationError = { key: string; args?: string[] }
 
 class CampaignController {
-    campaigns(req: Request, res: Response, next: NextFunction): Promise<Response> {
+    campaigns(req: Request, res: Response, next: NextFunction) {
         let promise
         if (req.query.dm) {
             promise = CampaignService.findCampaignsByDm(req.query.dm as string)
@@ -17,20 +18,37 @@ class CampaignController {
         } else {
             promise = CampaignService.findAllCampaigns()
         }
-        return promise.then((campaigns) => {
-            return res.status(200).json(campaigns)
+        promise.then((campaigns) => {
+            res.status(200).json(campaigns)
         })
     }
 
-    createCampaign(req: Request, res: Response, next: NextFunction): Promise<Response> {
-        return CampaignController.validateCampaignCreationData(req.body).then((errors) => {
+    createCampaign(req: Request, res: Response, next: NextFunction) {
+        CampaignController.validateCampaignCreationData(req.body).then((errors) => {
             if (errors.length > 0) {
-                return res.status(400).json({
+                res.status(400).json({
                     errors: errors.map((e) => TranslationService.translate(getLocale(req), e.key, ...(e.args ?? []))),
                 })
             } else {
-                return CampaignService.createCampaign(req.body).then((campaign) => {
-                    return res.status(200).json(campaign)
+                CampaignService.createCampaign(req.body).then((campaign) => {
+                    res.json(campaign)
+                })
+            }
+        })
+    }
+
+    updateCampaign(req: Request, res: Response, next: NextFunction) {
+        CampaignController.validateCampaignCreationData(req.body).then((errors) => {
+            if (errors.length > 0) {
+                res.status(400).json({
+                    errors: errors.map((e) => TranslationService.translate(getLocale(req), e.key, ...(e.args ?? []))),
+                })
+            } else {
+                CampaignService.updateCampaign({
+                    id: req.params.id,
+                    ...req.body,
+                }).then((campaign) => {
+                    res.json(campaign)
                 })
             }
         })
@@ -56,14 +74,41 @@ class CampaignController {
                 })
             }
             campaign.players?.forEach((player) => {
-                if (!users.find((u) => u.username === player)) {
+                if (!users.find((u) => u.username === player.user)) {
                     errors.push({
                         key: 'campaign.creation.unknownPlayer',
-                        args: [player],
+                        args: [player.user],
                     })
                 }
             })
-            return errors
+
+            const promises = []
+            campaign.players
+                ?.filter((player) => player.character)
+                .forEach((player) => {
+                    promises.push(
+                        SheetService.findSheet(player.character).then((sheet) => {
+                            if (!sheet) {
+                                errors.push({
+                                    key: 'campaign.creation.unknownSheet',
+                                    args: [player.user],
+                                })
+                            }
+                        }),
+                    )
+                })
+
+            return Promise.all(promises).then((results) => errors)
+        })
+    }
+
+    campaign(req: Request, res: Response, next: NextFunction) {
+        CampaignService.findCampaign(req.params.id).then((campaign) => {
+            if (campaign) {
+                res.json(campaign)
+            } else {
+                res.sendStatus(404)
+            }
         })
     }
 }

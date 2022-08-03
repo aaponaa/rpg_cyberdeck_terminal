@@ -12,8 +12,11 @@
         "./src/*"
       ]
     },
+    "strictNullChecks": false,
     "noImplicitAny": false,
     "resolveJsonModule": true,
+    "isolatedModules": false,
+    "preserveValueImports": false,
     "esModuleInterop": true,
     "types": [
       "@intlify/vite-plugin-vue-i18n/client"

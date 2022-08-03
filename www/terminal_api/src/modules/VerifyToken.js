@@ -5,7 +5,6 @@ function VerifyToken(req, res, next){
 
     // check header or url parameters or post parameters for token
     const authHeader = req.headers['authorization'];
-    console.log(authHeader)
     const token = authHeader && authHeader.split(' ')[1]; //
 
     if(!token){

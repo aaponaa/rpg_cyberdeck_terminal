@@ -3,7 +3,7 @@ import axios from '@/axios'
 import { joinWithSlash } from '@/modules/common/services/url-utils'
 
 class AuthService {
-    loggedInUser(): User | undefined {
+    loggedInUser(): User {
         const storedUser = localStorage.getItem(LOCAL_STORAGE_USER)
         return storedUser ? JSON.parse(storedUser) : undefined
     }

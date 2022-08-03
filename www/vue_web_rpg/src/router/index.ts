@@ -18,14 +18,14 @@ const router = createRouter({
 
         // Need to be connected
         {
-            path: '/userpage',
-            name: 'userpage',
-            component: () => import('../views/UserPage.vue'),
+            path: '/sheets',
+            name: 'sheets',
+            component: () => import('../modules/sheets/components/MySheets.vue'),
         },
         {
-            path: '/sheet',
+            path: '/sheets/:id',
             name: 'sheet',
-            component: () => import('../views/SheetShow.vue'),
+            component: () => import('../modules/sheets/components/CharacterSheet.vue'),
         },
     ],
 })

@@ -3,7 +3,9 @@ import AuthService from '@/modules/auth/auth.service'
 import type { Store } from 'vuex'
 import router from '@/router'
 
-const setup = (store: Store<{}>) => {
+export const ORIGINAL_URL = 'shadowrun.original_url'
+
+const setup = (store: Store<any>) => {
     // Request interceptor to set Authorization header
     axios.interceptors.request.use((request) => {
         const token = AuthService.loggedInUser()?.token
@@ -17,15 +19,16 @@ const setup = (store: Store<{}>) => {
     // Response interceptor to automatically refresh token
     axios.interceptors.response.use(
         (response) => {
+            const originalConfig = response.config
             return response
         },
         (error) => {
             const originalConfig = error.config
             if (originalConfig.url.includes('auth/refresh') && error.response) {
-                AuthService.logout()
-                store.dispatch('auth/logout')
-                router.push('/login')
-                return Promise.reject(error)
+                return store.dispatch('auth/logout').then((res) => {
+                    // router.push('/login')
+                    return Promise.reject(error)
+                })
             }
             if (!originalConfig.url.includes('auth/login') && error.response) {
                 if (error.response.status === 401 && !originalConfig._retry) {
