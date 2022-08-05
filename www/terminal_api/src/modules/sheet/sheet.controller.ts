@@ -15,19 +15,19 @@ class SheetController {
             if (sheet) {
                 Jwt.getAuthenticatedUser(req).then((u) => {
                     // res.json(sheet)
-                    let canSeeSheet = true;
-                                    if (!sheet.public) {
-                                        if (u !== sheet.user) {
-                                            if (u !== sheet.campaign.dm) {
-                                                canSeeSheet = false;
-                                            }
-                                        }
-                                    }
+                    let canSeeSheet = true
+                    if (!sheet.public) {
+                        if (u !== sheet.user) {
+                            if (u !== sheet.campaign.dm) {
+                                canSeeSheet = false
+                            }
+                        }
+                    }
                     if (!canSeeSheet) {
-                        res.sendStatus(403);
+                        res.sendStatus(403)
                     } else {
-                        // res.json(sheet);
-                        res.sendStatus(403);
+                        res.json(sheet);
+                        // res.sendStatus(403)
                     }
                 })
 
