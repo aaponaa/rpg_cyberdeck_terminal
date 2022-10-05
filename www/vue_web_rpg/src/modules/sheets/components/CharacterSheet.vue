@@ -4,6 +4,7 @@ import { computed, ComputedRef, onMounted, ref } from 'vue'
 import store from '@/store'
 import type { Sheet } from '@/modules/sheets/models/sheet.model'
 import PersonalDataCard from '@/modules/sheets/components/PersonalDataCard.vue'
+import AttributeCard from '@/modules/sheets/components/AttributesCard.vue'
 import sheetMessages from '@/modules/sheets/locales'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
@@ -65,6 +66,8 @@ onMounted(() => {
                      tabindex='0'>
 
                     <PersonalDataCard :sheet='sheet' @update='handleChange'></PersonalDataCard>
+
+                    <AttributeCard :sheet="sheet" @update="handleChange"></AttributeCard>
                 </div>
             </div>
         </template>

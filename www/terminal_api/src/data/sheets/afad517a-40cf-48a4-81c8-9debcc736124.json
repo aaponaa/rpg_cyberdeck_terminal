@@ -20,50 +20,62 @@
   },
   "attributes": {
     "body": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "agility": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "reaction": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "strength": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "willpower": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "logic": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "intuition": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "charisma": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "technomancy": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "magic": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "essence": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     },
     "luck": {
+      "modifiers": 0,
       "value": 1,
       "max": 6
     }

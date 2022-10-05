@@ -14,6 +14,7 @@ export enum Attributes {
 }
 
 export type Attribute = {
+    modifiers: number
     value: number
     max: number
 }
